@@ -31,8 +31,10 @@ func hit(dmg):
 		vida = clamp(vida - dmg, 0, VIDA_MAX)
 		emit_signal("barricada_health_change", vida)
 		if vida == 0:
-			emit_signal("barricada_destruida")
-			self.queue_free()
+			set_collision_layer_bit(0, false)
+			set_collision_mask_bit(0, false)
+			$Timer3_Explosion.start(TIEMPO_ESPERA)
+			$AnimationPlayer.play("explode")
 		$Timer2.start(TIEMPO_ESPERA)
 
 # Cuando el jugador entra en el area
@@ -49,3 +51,6 @@ func _on_player_repairing():
 		vida = clamp(vida + 1, 0, VIDA_MAX)
 		emit_signal("barricada_health_change", vida)
 		$Timer.start(TIEMPO_ESPERA)
+
+func _on_Timer3_Explosion_timeout():
+	emit_signal("barricada_destruida")
