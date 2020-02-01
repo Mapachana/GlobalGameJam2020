@@ -1,10 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/barricade_button/barricade_button.gd" type="Script" id=1]
 [ext_resource path="res://img/barricade_button/burricade_button.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 37.7481, 34.0929 )
+extents = Vector2( 11.3753, 9.92797 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "press_button"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
 
 [node name="barricade_button" type="Area2D"]
 position = Vector2( 34.9068, 36.4935 )
@@ -14,9 +30,11 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/press_button = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+hframes = 2
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
