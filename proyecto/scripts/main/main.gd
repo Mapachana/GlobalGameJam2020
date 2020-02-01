@@ -16,8 +16,11 @@ func _ready():
 #	pass
 
 func _on_barricada_barricada_destruida():
-	get_tree().quit()
+	$Node2D/Timer_endgame.start(3)
 
 
 func _on_torre_fin_victoria():
+	get_tree().quit()
+
+func _on_Timer_endgame_timeout():
 	get_tree().quit()
