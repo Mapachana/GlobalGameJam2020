@@ -17,8 +17,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var collision = move_and_collide(direction * velocity * speed * delta)
+	move_and_collide(direction * velocity * speed * delta)
 	
-	if collision:
-		$AnimationPlayer.play("panic")
 
