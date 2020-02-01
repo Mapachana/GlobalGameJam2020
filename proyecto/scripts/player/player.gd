@@ -6,7 +6,7 @@ class_name Player
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 1.0
+var speed = 0.10
 var vel = Vector2(0.0,0.0)
 var anim
 var is_repairing = false
@@ -17,6 +17,7 @@ signal repairing
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimationPlayer.play("walk_right")
 	pass # Replace with function body.
 
 
@@ -32,24 +33,31 @@ func move():
 		vel.x = speed
 		vel.y = 0
 		$Sprite.set_flip_h(false)
-		change_anim("walk_right")
+		if $AnimationPlayer.current_animation != "walk_right":
+			change_anim("walk_right")
 	elif (Input.is_action_pressed("ui_left")):
 		vel.x = -speed
 		vel.y = 0
 		$Sprite.set_flip_h(true)
-		change_anim("walk_right")
+		if $AnimationPlayer.current_animation != "walk_right":
+			change_anim("walk_right")
 	else:
 		vel.x = 0
 		vel.y = 0
+		#$AnimationPlayer.stop(true)
 		#change_anim("walk2")
 		
 func repair():
 	if (Input.is_action_pressed("ui_accept")):
 		is_repairing = true
 		emit_signal("repairing")
+		change_anim("repair_right")
 		#change_anim("repair")
 	else:
 		is_repairing = false
+		print($AnimationPlayer.current_animation)
+		if $AnimationPlayer.current_animation == "repair_right":
+			change_anim("walk_right")
 		#change_anim("walk")
 	
 	
