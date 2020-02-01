@@ -85,9 +85,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -142.525
-margin_top = -54.4255
-margin_right = -37.5253
-margin_bottom = -22.4255
+margin_top = -40.0
+margin_right = -37.525
+margin_bottom = -8.0
 text = "Try again: easy"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -99,9 +99,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 33.975
-margin_top = -55.7505
+margin_top = -40.0
 margin_right = 137.975
-margin_bottom = -23.7505
+margin_bottom = -8.0
 text = "Try again: hard"
 
 [node name="Button3" type="Button" parent="."]
@@ -110,9 +110,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -52.5
-margin_top = -16.0
 margin_right = 52.5
-margin_bottom = 16.0
+margin_bottom = 32.0
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
