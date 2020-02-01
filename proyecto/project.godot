@@ -9,13 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "Barricada",
+"language": "GDScript",
+"path": "res://scripts/barricada/barricada.gd"
+}, {
 "base": "Area2D",
 "class": "Pinchos",
 "language": "GDScript",
 "path": "res://scripts/pinchos/pinchos.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://escenas/player/player.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Zombie",
+"language": "GDScript",
+"path": "res://scripts/zombie/zombie.gd"
 } ]
 _global_script_class_icons={
-"Pinchos": ""
+"Barricada": "",
+"Pinchos": "",
+"Player": "",
+"Zombie": ""
 }
 
 [application]

@@ -79,5 +79,7 @@ func _process(delta):
 func _sacar_pinchos():
 	mover_pinchos = true
 
-func _on_Pinchos_body_entered(body):
-	emit_signal("hit_zombie", body)
+# Cuanto un zombie entra dentro 
+func _on_Pinchos_body_entered(body : Zombie):
+	body.die()
+	emit_signal("zombie_hit")

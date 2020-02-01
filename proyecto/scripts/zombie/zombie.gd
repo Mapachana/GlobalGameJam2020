@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+class_name Zombie
+
+# Cuando el zombie muere
+signal zombie_died
+
 # Zombie movement vector
 var velocity = Vector2(1,0)
 # Zombie speed
@@ -15,11 +20,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move_and_collide(direction * velocity * speed * delta)
-	pass
 
 # Set the movement of the zombie to right (1) or left (-1)
 func set_direction(dir):
 	if direction != dir:
 		direction = dir
 		$Sprite.flip_h
-	pass
+	
+# Mata al zombie
+func die():
+	self.queue_free()
+	emit_signal("zombie_died")
