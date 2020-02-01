@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://escenas/player/player.gd"
 }, {
+"base": "Area2D",
+"class": "Torre",
+"language": "GDScript",
+"path": "res://scripts/torre/torre.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Zombie",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "Barricada": "",
 "Pinchos": "",
 "Player": "",
+"Torre": "",
 "Zombie": "",
 "barricade_button": ""
 }

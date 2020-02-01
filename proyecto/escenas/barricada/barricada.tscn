@@ -34,5 +34,6 @@ margin_top = -33.7632
 margin_right = 448.634
 margin_bottom = 19.2368
 rect_scale = Vector2( 0.15, 0.15 )
+max_health = 3
 [connection signal="barricada_health_change" from="." to="GUI" method="_on_barricada_barricada_health_change"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Torre
+
 # puntos de vida actuales y maximos
 var life_points = 0
 var max_life = 100
@@ -30,7 +32,7 @@ func _process(delta):
 	pass
 
 
-func _on_Torre_body_entered(body):
+func _on_torre_body_entered(body):
 	if (body.is_repairing and $Timer.is_stopped()):
 		$Timer.start(tiempo_espera)
 		life_points += 1
