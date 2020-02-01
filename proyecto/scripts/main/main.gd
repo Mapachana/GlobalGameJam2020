@@ -13,7 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#	pass
+	#pass
+
 
 func _on_barricada_barricada_destruida():
 	$Node2D/Timer_endgame.start(3)
