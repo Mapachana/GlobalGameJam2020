@@ -31,11 +31,13 @@ func move():
 	if (Input.is_action_pressed("ui_right")):
 		vel.x = speed
 		vel.y = 0
-		#change_anim("walk")
+		$Sprite.set_flip_h(false)
+		change_anim("walk_right")
 	elif (Input.is_action_pressed("ui_left")):
 		vel.x = -speed
 		vel.y = 0
-		#change_anim("walk2")
+		$Sprite.set_flip_h(true)
+		change_anim("walk_right")
 	else:
 		vel.x = 0
 		vel.y = 0

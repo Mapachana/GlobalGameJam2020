@@ -5,7 +5,7 @@ class_name barricade_button
 signal barricade_button_pressed
 
 # Tiempo de enfriamiento 
-export var TIEMPO_ESPERA = 3
+export var TIEMPO_ESPERA = 2
 
 # Booleanas
 # Botón pulsado
@@ -14,6 +14,8 @@ var pressed = false
 var player_near = false
 
 func _ready():
+	# Establecemos que el botón inicialmente esté en la posición levantada
+	$Sprite.frame = 0
 	pass
 
 
@@ -35,6 +37,7 @@ func _on_player_repairing():
 		emit_signal("barricade_button_pressed")
 		pressed = true
 		$Timer.start(TIEMPO_ESPERA)
+		$AnimationPlayer.play("press_button")
 
 
 func _on_Timer_timeout():
