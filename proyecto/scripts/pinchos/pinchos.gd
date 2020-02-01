@@ -8,7 +8,7 @@ signal hit_zombie
 # Velocidad de movimiento de los pinchos
 export var SMOOTH_SPEED : float = 5
 # Segundos antes de volver los pinchos
-export var TIEMPO_ESPERA : float = 1.5
+export var TIEMPO_ESPERA : float = 1
 # Desplazamiento máximo de los pinchos
 export var DESP_MAX : float = 50
 # Si los pinchos están orientados hacia la derecha (1) o izquierda (-1)
@@ -80,7 +80,7 @@ func _on_barricade_button_barricade_button_pressed():
 func _on_pinchos_body_entered(body : Zombie):
 	if body:
 		body.die()
-		emit_signal("zombie_hit")
+		emit_signal("hit_zombie")
 
 # Cuando se destruye la barricada asociada a los pinchos
 func _on_barricada_barricada_destruida():

@@ -6,7 +6,7 @@
 [ext_resource path="res://escenas/barricade_button/barricade_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://escenas/player/player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://escenas/pinchos/pinchos.tscn" type="PackedScene" id=6]
-[ext_resource path="res://escenas/zombie/zombie.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/main/spawner.gd" type="Script" id=7]
 [ext_resource path="res://scripts/main/main.gd" type="Script" id=8]
 
 [node name="Node2D" type="Node2D"]
@@ -21,11 +21,11 @@ texture = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 
 [node name="pinchos" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 71.4775, 282.112 )
+position = Vector2( 117.978, 282.112 )
 DESP_MAX = 30.0
 
 [node name="pinchos2" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 442.159, 281.043 )
+position = Vector2( 397.659, 281.043 )
 DESP_MAX = 30.0
 orientacion = 1
 
@@ -34,25 +34,30 @@ position = Vector2( 259.634, 236.165 )
 scale = Vector2( 2, 2 )
 
 [node name="barricada" parent="Node2D" instance=ExtResource( 3 )]
-position = Vector2( 72.7919, 282.218 )
+position = Vector2( 119.292, 282.218 )
 
 [node name="barricada2" parent="Node2D" instance=ExtResource( 3 )]
-position = Vector2( 441.763, 281.621 )
+position = Vector2( 397.263, 281.621 )
 
 [node name="barricade_button" parent="Node2D" instance=ExtResource( 4 )]
-position = Vector2( 163.068, 290.817 )
+position = Vector2( 181.019, 290.817 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="barricade_button2" parent="Node2D" instance=ExtResource( 4 )]
-position = Vector2( 366.408, 290.669 )
+position = Vector2( 334.908, 290.669 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="player" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 210.464, 278.267 )
 scale = Vector2( 2, 2 )
 
-[node name="zombie" parent="Node2D" instance=ExtResource( 7 )]
-position = Vector2( 7.83284, 279.055 )
+[node name="Node2D" type="Node2D" parent="Node2D"]
+position = Vector2( -16.8846, 279.147 )
+script = ExtResource( 7 )
+min_t = 3
+max_t = 5
+
+[node name="Timer" type="Timer" parent="Node2D/Node2D"]
 [connection signal="body_exited" from="Node2D/torre" to="Node2D/torre" method="_on_torre_body_exited"]
 [connection signal="fin_victoria" from="Node2D/torre" to="." method="_on_torre_fin_victoria"]
 [connection signal="barricada_destruida" from="Node2D/barricada" to="Node2D/pinchos" method="_on_barricada_barricada_destruida"]
@@ -61,8 +66,9 @@ position = Vector2( 7.83284, 279.055 )
 [connection signal="barricada_destruida" from="Node2D/barricada2" to="Node2D/pinchos2" method="_on_barricada_barricada_destruida"]
 [connection signal="barricade_button_pressed" from="Node2D/barricade_button" to="Node2D/pinchos" method="_on_barricade_button_barricade_button_pressed"]
 [connection signal="barricade_button_pressed" from="Node2D/barricade_button2" to="Node2D/pinchos2" method="_on_barricade_button_barricade_button_pressed"]
-[connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button2" method="_on_player_repairing"]
-[connection signal="repairing" from="Node2D/player" to="Node2D/barricada2" method="_on_player_repairing"]
-[connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricada" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/torre" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button2" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricada2" method="_on_player_repairing"]
+[connection signal="timeout" from="Node2D/Node2D/Timer" to="Node2D/Node2D" method="_on_Timer_timeout"]

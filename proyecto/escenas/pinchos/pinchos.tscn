@@ -9,6 +9,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+TIEMPO_ESPERA = 0.5
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

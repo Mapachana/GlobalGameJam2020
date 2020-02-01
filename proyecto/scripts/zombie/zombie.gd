@@ -8,7 +8,7 @@ signal zombie_died
 # Zombie movement vector
 var velocity = Vector2(1,0)
 # Zombie speed
-var speed = 5
+var speed = 15
 # Direction (right by default)
 var direction = 1
 var colision
