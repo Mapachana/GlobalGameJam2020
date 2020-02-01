@@ -5,9 +5,11 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+var ScManager = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ScManager = get_node("/root/Global")
 	pass # Replace with function body.
 
 
@@ -21,7 +23,7 @@ func _on_barricada_barricada_destruida():
 
 
 func _on_torre_fin_victoria():
-	get_tree().quit()
+	ScManager.goto_scene("res://escenas/GameOver_lose.tscn")
 
 func _on_Timer_endgame_timeout():
-	get_tree().quit()
+	ScManager.goto_scene("res://escenas/GameOver_lose.tscn")
