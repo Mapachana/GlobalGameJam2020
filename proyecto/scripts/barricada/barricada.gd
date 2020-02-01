@@ -12,6 +12,8 @@ const VIDA_MAX = 3
 const TIEMPO_ESPERA = 2
 # La vida de la barricada
 export var vida = VIDA_MAX
+# Si el cuerpo está dentro
+var body_inside = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,9 +38,14 @@ func hit(dmg):
 # Cuando el jugador entra en el area
 func _on_Area2D_body_entered(body : Player):
 	if body:
-		# Si está reparado
-		if body.is_repairing and $Timer.is_stopped():
-			vida = clamp(vida + 1, 0, VIDA_MAX)
-			emit_signal("barricad_health_change", vida)
-			$Timer.start(TIEMPO_ESPERA)
+		body_inside = true
 			
+func _on_Area2D_body_exited(body : Player):
+	if body:
+		body_inside = false
+			
+func _on_player_repairing():
+	if body_inside and $Timer.is_stopped():
+		vida = clamp(vida + 1, 0, VIDA_MAX)
+		emit_signal("barricad_health_change", vida)
+		$Timer.start(TIEMPO_ESPERA)

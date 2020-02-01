@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://img/barricada/Barricada.png" type="Texture" id=1]
 [ext_resource path="res://scripts/barricada/barricada.gd" type="Script" id=2]
 [ext_resource path="res://escenas/gui/gui.tscn" type="PackedScene" id=3]
+[ext_resource path="res://escenas/pinchos/pinchos.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.5438, 10 )
 
 [node name="barricada" type="StaticBody2D"]
 script = ExtResource( 2 )
+
+[node name="pinchos" parent="." instance=ExtResource( 4 )]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -35,5 +38,7 @@ margin_right = 448.634
 margin_bottom = 19.2368
 rect_scale = Vector2( 0.15, 0.15 )
 max_health = 3
+[connection signal="barricada_destruida" from="." to="pinchos" method="_on_barricada_barricada_destruida"]
 [connection signal="barricada_health_change" from="." to="GUI" method="_on_barricada_barricada_health_change"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
