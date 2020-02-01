@@ -19,8 +19,7 @@ func _ready():
 
 
 func _on_barricada_barricada_destruida():
-	$Node2D/Timer_endgame.start(3)
-
+	$Node2D/Timer_endgame.start(1.5)
 
 func _on_torre_fin_victoria():
 	ScManager.goto_scene("res://escenas/GameOver_lose.tscn")
