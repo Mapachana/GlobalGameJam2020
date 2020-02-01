@@ -196,3 +196,4 @@ anims/panic = SubResource( 6 )
 
 [node name="Timer_explosion" type="Timer" parent="."]
 one_shot = true
+[connection signal="timeout" from="Timer_explosion" to="." method="_on_Timer_explosion_timeout"]

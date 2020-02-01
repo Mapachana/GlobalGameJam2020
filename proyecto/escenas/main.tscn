@@ -80,6 +80,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="pato" type="Node2D" parent="."]
+position = Vector2( 0, 160 )
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
