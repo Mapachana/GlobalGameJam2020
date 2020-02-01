@@ -2,14 +2,15 @@ extends StaticBody2D
 
 class_name Barricada
 
+# Cuando se destruye una barricada
+signal barricada_destruida
+
 # Vida máxima
 const VIDA_MAX = 3
 # Tiempo de espera para reparación
 const TIEMPO_ESPERA = 2
 # La vida de la barricada
 export var vida = VIDA_MAX
-# Cuando se destruye una barricada
-signal barricada_destruida
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
