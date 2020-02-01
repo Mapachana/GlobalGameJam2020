@@ -1,26 +1,31 @@
 extends Area2D
 
+class_name Pinchos
+
+# Señal, cuando un zombie choca
+signal hit_zombie
+
 # Velocidad de movimiento de los pinchos
-const SMOOTH_SPEED = 200
+export var SMOOTH_SPEED : float = 200
 # Segundos antes de volver los pinchos
-const TIEMPO_ESPERA = 1.5
+export var TIEMPO_ESPERA : float = 1.5
 # Desplazamiento máximo de los pinchos
-const DESP_MAX = 50
+export var DESP_MAX : float = 50
 # Si los pinchos están orientados hacia la derecha (1) o izquierda (-1)
-export var orientacion = 1
+export var orientacion : int = 1
 # Si los pinchos deben moverse
-var mover_pinchos = false
+var mover_pinchos : bool = false
 # Cronómetro
-var time_start = 0
-var time_now = 0
+var time_start : int = 0
+var time_now: int  = 0
 # Posicion X maxima 
-var pos_max = 0
+var pos_max : float = 0
 # Posicion X actual
-var pos_original = 0
+var pos_original : float = 0
 # Si el movimiento es adelante o atras
-var mov_adelante = 1
+var mov_adelante : int = 1
 # Desplazamiento de los pinchos
-var desp = 0
+var desp : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,13 +34,12 @@ func _ready():
 	pos_max = position.x + (DESP_MAX * orientacion)
 	# Volteamos el sprite si la orientación es negativa
 	if orientacion == -1:
-		$Sprite.set_flip_h(true)
-	pass
+		rotation_degrees -= 180
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("ui_accept"):
-		sacar_pinchos()
+		_sacar_pinchos()
 	
 	# Si hemos iniciado el cronometro
 	if time_start != 0:
@@ -51,7 +55,7 @@ func _process(delta):
 	# Si hay que mover los pinchos
 	if mover_pinchos:
 		# Desplazamiento depende de los frames
-		desp = SMOOTH_SPEED * delta * orientacion * mov_adelante
+		desp = (DESP_MAX * SMOOTH_SPEED) * delta * orientacion * mov_adelante
 		# Movemos los pinchos
 		position.x += desp
 		# Restringimos la posicion
@@ -70,8 +74,10 @@ func _process(delta):
 			# Restablecemos estado inicial
 			mov_adelante = 1
 			mover_pinchos = false	
-	pass
 
 # Activar los pinchos (moverlos)
-func sacar_pinchos():
+func _sacar_pinchos():
 	mover_pinchos = true
+
+func _on_Pinchos_body_entered(body : Zombie):
+	emit_signal("hit_zombie", body)
