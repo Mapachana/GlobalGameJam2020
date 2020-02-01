@@ -13,6 +13,7 @@ var is_repairing = false
 
 # Señal para reparar
 signal repairing
+signal pato_presionado
 
 
 # Called when the node enters the scene tree for the first time.
@@ -46,6 +47,8 @@ func move():
 		$Sprite.set_flip_h(true)
 		if $AnimationPlayer.current_animation != "walk_right":
 			change_anim("walk_right")
+	elif Input.is_action_pressed("ui_pato"):
+		emit_signal("pato_presionado")
 	elif (not is_repairing):
 		vel.x = 0
 		vel.y = 0

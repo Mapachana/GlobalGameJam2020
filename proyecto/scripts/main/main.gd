@@ -7,9 +7,15 @@ extends Node2D
 
 var ScManager = null
 var time_start 
+var rng = RandomNumberGenerator.new()
+var moba = false
+var prob_moba
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	moba = false
+	rng.randomize()
 	ScManager = get_node("/root/Global")
 	time_start = OS.get_unix_time()
 	$Label.text = "Score: 0"
@@ -18,12 +24,13 @@ func _ready():
 		$Node2D/barricada2.change_health(8)
 		$Node2D/Node2D.min_t = 2.75
 		$Node2D/Node2D.max_t = 4.75
+		prob_moba = 0.95
 	else:
 		$Node2D/barricada.change_health(10)
 		$Node2D/barricada2.change_health(10)
 		$Node2D/Node2D.min_t = 3
 		$Node2D/Node2D.max_t = 5
-		
+		prob_moba = 0.85
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -48,3 +55,12 @@ func _on_Timer_endgame_timeout():
 func _on_pinchos_hit_zombie():
 	ScManager.score += 10
 	$Label.text = "Score: " + str(ScManager.score)
+	if rng.randf_range(0, 1) > prob_moba:
+		moba = true
+		# Hacer pato
+
+func _on_player_pato_presionado():
+	if moba:
+		get_tree().call_group("enemies", "die")
+		moba = false
+		# Delete pato

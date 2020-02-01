@@ -32,3 +32,4 @@ func _on_Timer_timeout():
 	if round(rng.randf_range(0,1)):
 		zom.position.x += 540
 		zom.set_direction(-1)
+	zom.add_to_group("enemies")
