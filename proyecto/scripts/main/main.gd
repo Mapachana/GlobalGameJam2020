@@ -69,3 +69,8 @@ func _on_player_pato_presionado():
 		get_tree().call_group("enemies", "die")
 		moba = false
 		pato.explode_duck()
+
+
+func _on_Area2D_body_entered(body):
+	moba = false
+	pato.queue_free()
