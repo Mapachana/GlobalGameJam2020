@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://img/rectangulonegro.png" type="Texture" id=1]
 [ext_resource path="res://MainTitle.gd" type="Script" id=2]
 [ext_resource path="res://img/progress_bar/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://img/progress_bar/twitter-app-icon-transparent-17.jpg.png" type="Texture" id=4]
-[ext_resource path="res://escenas/zombie/zombie.tscn" type="PackedScene" id=5]
+[ext_resource path="res://escenas/duck/duck.tscn" type="PackedScene" id=5]
 [ext_resource path="res://img/progress_bar/fuente_tw.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://escenas/duck/z_duck.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -125,8 +126,15 @@ margin_bottom = 860.055
 rect_scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 4 )
 
-[node name="zombie" parent="." instance=ExtResource( 5 )]
-position = Vector2( 45.2138, 323.325 )
+[node name="z_duck" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1000, 340 )
+direction = -1
+speed = 100
+
+[node name="duck" parent="." instance=ExtResource( 5 )]
+position = Vector2( 40, 340 )
+speed = 100
+lucky_duck = false
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
