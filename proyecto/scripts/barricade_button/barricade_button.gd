@@ -44,3 +44,7 @@ func _on_player_repairing():
 
 func _on_Timer_timeout():
 	pressed = false
+
+
+func _on_barricade_button2_body_exited(body):
+	pass # Replace with function body.
