@@ -34,7 +34,6 @@ func _process(delta):
 	if lucky_duck:
 		if animation_selected == 0:
 			animation_selected = rng.randi_range(1,3)
-			print(animation_selected)
 			if animation_selected == 1:
 				$AnimationPlayer.play("lucky_duck_1")
 			elif animation_selected == 2:
