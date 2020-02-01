@@ -17,7 +17,7 @@ signal repairing
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("walk_right")
+	$AnimationPlayer.play("idle")
 	pass # Replace with function body.
 
 
@@ -41,11 +41,11 @@ func move():
 		$Sprite.set_flip_h(true)
 		if $AnimationPlayer.current_animation != "walk_right":
 			change_anim("walk_right")
-	else:
+	elif (not is_repairing):
 		vel.x = 0
 		vel.y = 0
 		#$AnimationPlayer.stop(true)
-		#change_anim("walk2")
+		change_anim("idle")
 		
 func repair():
 	if (Input.is_action_pressed("ui_accept")):
@@ -56,7 +56,7 @@ func repair():
 	else:
 		is_repairing = false
 		if $AnimationPlayer.current_animation == "repair_right":
-			change_anim("walk_right")
+			change_anim("idle")
 		#change_anim("walk")
 	
 	

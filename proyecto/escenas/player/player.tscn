@@ -1,10 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://img/player/player_completo.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.87497, 9.48428 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "repair_right"
@@ -51,9 +67,10 @@ shape = SubResource( 1 )
 position = Vector2( -1.01954, 0 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
-hframes = 6
-frame = 4
+hframes = 8
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 4 )
 anims/repair_right = SubResource( 2 )
 anims/walk_right = SubResource( 3 )
