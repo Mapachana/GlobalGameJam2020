@@ -6,6 +6,7 @@ var ScManager = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ScManager = get_node("/root/Global")
+	$Label3.text = "Score: " + str(ScManager.score)
 	set_process(true)
 
 #Check button press
