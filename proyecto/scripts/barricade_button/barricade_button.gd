@@ -25,10 +25,12 @@ func _ready():
 
 
 func _on_barricade_button_body_entered(body : Player):
-	player_near = true
+	if body:
+		player_near = true
 
 func _on_barricade_button_body_exited(body : Player):
-	player_near = false
+	if body:
+		player_near = false
 
 func _on_player_repairing():
 	# Si el jugador está pulsando el botón de reparar se emite la señal para 

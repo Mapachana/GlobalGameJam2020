@@ -7,6 +7,8 @@ var life_points = 0
 var max_life = 100
 var tiempo_espera = 1.0
 
+var player_near = false
+
 # señal que indica cuando se cambia la vida de la torre
 signal tower_health_change
 # señal que indica fin del juego con victoria FIXME sin vincular
@@ -32,12 +34,17 @@ func _process(delta):
 	pass
 
 
-func _on_torre_body_entered(body):
-	if (body.is_repairing and $Timer.is_stopped()):
+func _on_torre_body_entered(body : Player):
+	if body:
+		player_near = true
+	
+func _on_torre_body_exited(body : Player):
+	if body:
+		player_near = false
+
+func _on_player_repairing():
+	if player_near and $Timer.is_stopped():
 		$Timer.start(tiempo_espera)
 		life_points += 1
 		emit_signal("tower_health_change", life_points)
-		$Timer.stop()
-	else:
-		$Timer.stop()
-	pass # Replace with function body.
+		

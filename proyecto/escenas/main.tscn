@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://img/fondo/brick-wall-1834446_1920.jpg" type="Texture" id=1]
 [ext_resource path="res://escenas/torre/torre.tscn" type="PackedScene" id=2]
 [ext_resource path="res://escenas/barricada/barricada.tscn" type="PackedScene" id=3]
 [ext_resource path="res://escenas/barricade_button/barricade_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://escenas/player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://escenas/pinchos/pinchos.tscn" type="PackedScene" id=6]
+[ext_resource path="res://escenas/zombie/zombie.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/main/main.gd" type="Script" id=8]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 515.833, 300.433 )
@@ -15,6 +19,15 @@ texture = ExtResource( 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2( 2, 2 )
+
+[node name="pinchos" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 71.4775, 282.112 )
+DESP_MAX = 30.0
+
+[node name="pinchos2" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 442.159, 281.043 )
+DESP_MAX = 30.0
+orientacion = 1
 
 [node name="torre" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( 259.634, 236.165 )
@@ -37,3 +50,19 @@ scale = Vector2( 0.7, 0.7 )
 [node name="player" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 210.464, 278.267 )
 scale = Vector2( 2, 2 )
+
+[node name="zombie" parent="Node2D" instance=ExtResource( 7 )]
+position = Vector2( 7.83284, 279.055 )
+[connection signal="body_exited" from="Node2D/torre" to="Node2D/torre" method="_on_torre_body_exited"]
+[connection signal="fin_victoria" from="Node2D/torre" to="." method="_on_torre_fin_victoria"]
+[connection signal="barricada_destruida" from="Node2D/barricada" to="Node2D/pinchos" method="_on_barricada_barricada_destruida"]
+[connection signal="barricada_destruida" from="Node2D/barricada" to="." method="_on_barricada_barricada_destruida"]
+[connection signal="barricada_destruida" from="Node2D/barricada2" to="." method="_on_barricada_barricada_destruida"]
+[connection signal="barricada_destruida" from="Node2D/barricada2" to="Node2D/pinchos2" method="_on_barricada_barricada_destruida"]
+[connection signal="barricade_button_pressed" from="Node2D/barricade_button" to="Node2D/pinchos" method="_on_barricade_button_barricade_button_pressed"]
+[connection signal="barricade_button_pressed" from="Node2D/barricade_button2" to="Node2D/pinchos2" method="_on_barricade_button_barricade_button_pressed"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button2" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricada2" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricada" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/torre" method="_on_player_repairing"]

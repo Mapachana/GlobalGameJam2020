@@ -46,6 +46,8 @@ func _on_Area2D_body_exited(body : Player):
 			
 func _on_player_repairing():
 	if body_inside and $Timer.is_stopped():
+		print("vida antes:", vida)
 		vida = clamp(vida + 1, 0, VIDA_MAX)
-		emit_signal("barricad_health_change", vida)
+		print("vida despues:", vida)
+		emit_signal("barricada_health_change", vida)
 		$Timer.start(TIEMPO_ESPERA)

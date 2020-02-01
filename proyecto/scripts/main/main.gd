@@ -1,24 +1,23 @@
-extends Node
+extends Node2D
 
-onready var viewport = get_viewport()
 
-var minimum_size = Vector2(1024, 600)
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
+
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	viewport.connect("size_changed", self, "window_resize")
-	window_resize()
+	pass # Replace with function body.
 
-func window_resize():
-	var current_size = OS.get_window_size()
 
-	var scale_factor = minimum_size.y/current_size.y
-	var new_size = Vector2(current_size.x*scale_factor, minimum_size.y)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
 
-	if new_size.y < minimum_size.y:
-		scale_factor = minimum_size.y/new_size.y
-		new_size = Vector2(new_size.x*scale_factor, minimum_size.y)
-	if new_size.x < minimum_size.x:
-		scale_factor = minimum_size.x/new_size.x
-		new_size = Vector2(minimum_size.x, new_size.y*scale_factor)
+func _on_barricada_barricada_destruida():
+	get_tree().quit()
 
-	viewport.set_size_override(true, new_size)
+
+func _on_torre_fin_victoria():
+	get_tree().quit()
