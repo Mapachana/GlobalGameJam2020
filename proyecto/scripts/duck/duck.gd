@@ -34,7 +34,6 @@ func _process(delta):
 	if lucky_duck:
 		if animation_selected == 0:
 			animation_selected = rng.randi_range(1,3)
-			print(animation_selected)
 			if animation_selected == 1:
 				$AnimationPlayer.play("lucky_duck_1")
 			elif animation_selected == 2:
@@ -43,7 +42,7 @@ func _process(delta):
 				$AnimationPlayer.play("lucky_duck_3")
 
 func explode_duck():
-	$Timer_explosion.start(4)
+	$Timer_explosion.start(1)
 	$AnimationPlayer.play("explode")
 
 func _on_Timer_explosion_timeout():
