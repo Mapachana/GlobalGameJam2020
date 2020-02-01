@@ -38,9 +38,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("ui_accept"):
-		_sacar_pinchos()
-	
 	# Si hemos iniciado el cronometro
 	if time_start != 0:
 		# Tomamos el tiempo
@@ -76,7 +73,7 @@ func _process(delta):
 			mover_pinchos = false	
 
 # Activar los pinchos (moverlos)
-func _sacar_pinchos():
+func _on_barricade_button_barricade_button_pressed():
 	mover_pinchos = true
 
 # Cuanto un zombie entra dentro 
