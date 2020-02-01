@@ -66,11 +66,15 @@ func _on_pinchos_hit_zombie():
 		
 func _on_player_pato_presionado():
 	if moba:
-		get_tree().call_group("enemies", "die")
 		moba = false
 		pato.explode_duck()
+		$Explosion.start(0.5)
 
 
 func _on_Area2D_body_entered(body):
 	moba = false
 	pato.queue_free()
+
+
+func _on_Explosion_timeout():
+	get_tree().call_group("enemies", "die")

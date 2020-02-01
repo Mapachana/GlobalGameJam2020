@@ -96,6 +96,8 @@ position = Vector2( 1022.25, 160 )
 position = Vector2( 70, 0 )
 scale = Vector2( 6, 6 )
 shape = SubResource( 2 )
+
+[node name="Explosion" type="Timer" parent="."]
 [connection signal="hit_zombie" from="Node2D/pinchos" to="." method="_on_pinchos_hit_zombie"]
 [connection signal="hit_zombie" from="Node2D/pinchos2" to="." method="_on_pinchos_hit_zombie"]
 [connection signal="body_exited" from="Node2D/torre" to="Node2D/torre" method="_on_torre_body_exited"]
@@ -115,3 +117,4 @@ shape = SubResource( 2 )
 [connection signal="timeout" from="Node2D/Node2D/Timer" to="Node2D/Node2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Node2D/Timer_endgame" to="." method="_on_Timer_endgame_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Explosion" to="." method="_on_Explosion_timeout"]
