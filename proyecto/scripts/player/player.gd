@@ -6,7 +6,7 @@ class_name Player
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 3
+var speed = 85.0
 var vel = Vector2(0.0,0.0)
 var anim
 var is_repairing = false
@@ -25,7 +25,7 @@ func _ready():
 func _process(delta):
 	repair()
 	move()
-	move_and_collide(vel)
+	move_and_collide(vel*delta)
 	pass
 
 func move():
