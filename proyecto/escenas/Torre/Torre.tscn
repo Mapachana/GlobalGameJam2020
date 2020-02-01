@@ -48,5 +48,6 @@ margin_bottom = 15.4191
 rect_scale = Vector2( 0.15, 0.15 )
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 [connection signal="body_entered" from="." to="." method="_on_Torre_body_entered"]
 [connection signal="tower_health_change" from="." to="GUI" method="_on_Torre_tower_health_change"]
