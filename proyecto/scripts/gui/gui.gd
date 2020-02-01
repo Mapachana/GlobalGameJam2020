@@ -13,6 +13,11 @@ func _ready():
 	#var player_max_health = $"../Characters/Player".max_health
 	#$Bar/Gauge.max_value = player_max_health
 	$Bar/Gauge.max_value = max_health
+	
+func change_health(health):
+	$Bar/Gauge.max_value = health
+	animated_health = health
+	$Bar/number.text = str(health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

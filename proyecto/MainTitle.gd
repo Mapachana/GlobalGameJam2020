@@ -15,9 +15,11 @@ func _process(delta):
 	if (Input.is_action_just_pressed("ui_accept")):
 		ScManager.goto_scene("res://escenas/main.tscn")
 
-
-
-
 func _on_Button_pressed():
+	ScManager.dificil = false
 	ScManager.goto_scene("res://escenas/main.tscn")
-	pass # Replace with function body.
+
+
+func _on_Button2_pressed():
+	ScManager.dificil = true
+	ScManager.goto_scene("res://escenas/main.tscn")

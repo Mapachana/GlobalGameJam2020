@@ -18,7 +18,14 @@ var body_inside = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	vida = VIDA_MAX
+	$GUI.change_health(vida)
 	emit_signal("barricada_health_change", vida)
+	
+func change_health(health):
+	VIDA_MAX = health
+	vida = health
+	$GUI.change_health(health)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

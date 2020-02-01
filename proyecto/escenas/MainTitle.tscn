@@ -56,11 +56,21 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 247.95
+margin_left = 180.0
 margin_top = 262.655
-margin_right = 344.95
+margin_right = 277.0
 margin_bottom = 294.655
-text = "Start"
+text = "Easy"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 330.0
+margin_top = 262.655
+margin_right = 427.0
+margin_bottom = 294.655
+text = "Hard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 108.122
@@ -73,3 +83,4 @@ texture = ExtResource( 4 )
 [node name="zombie" parent="." instance=ExtResource( 5 )]
 position = Vector2( 45.2138, 323.325 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

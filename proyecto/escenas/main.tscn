@@ -40,9 +40,11 @@ scale = Vector2( 2, 2 )
 
 [node name="barricada" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 119.292, 282.218 )
+VIDA_MAX = 8
 
 [node name="barricada2" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 397.263, 281.621 )
+VIDA_MAX = 8
 
 [node name="barricade_button" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 181.019, 290.817 )
@@ -78,15 +80,15 @@ __meta__ = {
 [connection signal="hit_zombie" from="Node2D/pinchos2" to="." method="_on_pinchos_hit_zombie"]
 [connection signal="body_exited" from="Node2D/torre" to="Node2D/torre" method="_on_torre_body_exited"]
 [connection signal="fin_victoria" from="Node2D/torre" to="." method="_on_torre_fin_victoria"]
-[connection signal="barricada_destruida" from="Node2D/barricada" to="." method="_on_barricada_barricada_destruida"]
 [connection signal="barricada_destruida" from="Node2D/barricada" to="Node2D/pinchos" method="_on_barricada_barricada_destruida"]
+[connection signal="barricada_destruida" from="Node2D/barricada" to="." method="_on_barricada_barricada_destruida"]
 [connection signal="barricada_destruida" from="Node2D/barricada2" to="Node2D/pinchos2" method="_on_barricada_barricada_destruida"]
 [connection signal="barricada_destruida" from="Node2D/barricada2" to="." method="_on_barricada_barricada_destruida"]
 [connection signal="barricade_button_pressed" from="Node2D/barricade_button" to="Node2D/pinchos" method="_on_barricade_button_barricade_button_pressed"]
 [connection signal="barricade_button_pressed" from="Node2D/barricade_button2" to="Node2D/pinchos2" method="_on_barricade_button_barricade_button_pressed"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/torre" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button2" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button" method="_on_player_repairing"]
-[connection signal="repairing" from="Node2D/player" to="Node2D/torre" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricada2" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricada" method="_on_player_repairing"]
 [connection signal="timeout" from="Node2D/Node2D/Timer" to="Node2D/Node2D" method="_on_Timer_timeout"]
