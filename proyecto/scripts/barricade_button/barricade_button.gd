@@ -24,11 +24,9 @@ func _ready():
 
 func _on_barricade_button_body_entered(body : Player):
 	player_near = true
-	print("in")
 
 func _on_barricade_button_body_exited(body : Player):
 	player_near = false
-	print("out")
 
 func _on_player_repairing():
 	# Si el jugador está pulsando el botón de reparar se emite la señal para 
@@ -40,5 +38,4 @@ func _on_player_repairing():
 
 
 func _on_Timer_timeout():
-	print("timeout") 	
 	pressed = false
