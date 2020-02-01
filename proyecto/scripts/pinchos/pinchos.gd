@@ -12,7 +12,7 @@ export var TIEMPO_ESPERA : float = 1.5
 # Desplazamiento máximo de los pinchos
 export var DESP_MAX : float = 50
 # Si los pinchos están orientados hacia la derecha (1) o izquierda (-1)
-export var orientacion : int = 1
+export var orientacion : int = -1
 # Si los pinchos deben moverse
 var mover_pinchos : bool = false
 # Cronómetro
@@ -33,7 +33,7 @@ func _ready():
 	pos_original = position.x
 	pos_max = position.x + (DESP_MAX * orientacion)
 	# Volteamos el sprite si la orientación es negativa
-	if orientacion == -1:
+	if orientacion == 1:
 		rotation_degrees -= 180
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

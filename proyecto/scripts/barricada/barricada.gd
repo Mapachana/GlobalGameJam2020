@@ -4,6 +4,8 @@ class_name Barricada
 
 # Vida máxima
 const VIDA_MAX = 3
+# Tiempo de espera para reparación
+const TIEMPO_ESPERA = 2
 # La vida de la barricada
 export var vida = VIDA_MAX
 # Cuando se destruye una barricada
@@ -21,5 +23,5 @@ func _ready():
 func _on_Area2D_body_entered(body : Player):
 	if body.is_repairing and $Timer.is_stopped():
 		vida = clamp(vida + 1, 0, VIDA_MAX)
-		$Timer.start(2)
+		$Timer.start(TIEMPO_ESPERA)
 		
