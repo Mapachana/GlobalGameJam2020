@@ -6,7 +6,7 @@ class_name Pinchos
 signal hit_zombie
 
 # Velocidad de movimiento de los pinchos
-export var SMOOTH_SPEED : float = 200
+export var SMOOTH_SPEED : float = 5
 # Segundos antes de volver los pinchos
 export var TIEMPO_ESPERA : float = 1.5
 # Desplazamiento máximo de los pinchos
@@ -79,5 +79,5 @@ func _process(delta):
 func _sacar_pinchos():
 	mover_pinchos = true
 
-func _on_Pinchos_body_entered(body : Zombie):
+func _on_Pinchos_body_entered(body):
 	emit_signal("hit_zombie", body)
