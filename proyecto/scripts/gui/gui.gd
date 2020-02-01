@@ -18,6 +18,7 @@ func change_health(health):
 	$Bar/Gauge.max_value = health
 	animated_health = health
 	$Bar/number.text = str(health)
+	update_health(health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

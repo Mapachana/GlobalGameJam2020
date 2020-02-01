@@ -79,6 +79,9 @@ margin_right = 620.122
 margin_bottom = 858.343
 rect_scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="zombie" parent="." instance=ExtResource( 5 )]
 position = Vector2( 45.2138, 323.325 )

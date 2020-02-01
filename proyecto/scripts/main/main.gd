@@ -14,11 +14,16 @@ func _ready():
 	time_start = OS.get_unix_time()
 	$Label.text = "Score: 0"
 	if ScManager.dificil:
-		print("dificil")
 		$Node2D/barricada.change_health(8)
 		$Node2D/barricada2.change_health(8)
-		$Node2D/Node2D.min_t -= 0.25
-		$Node2D/Node2D.max_t -= 0.25
+		$Node2D/Node2D.min_t = 2.75
+		$Node2D/Node2D.max_t = 4.75
+	else:
+		$Node2D/barricada.change_health(10)
+		$Node2D/barricada2.change_health(10)
+		$Node2D/Node2D.min_t = 3
+		$Node2D/Node2D.max_t = 5
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
