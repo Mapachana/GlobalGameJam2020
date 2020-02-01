@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://escenas/pinchos/pinchos.tscn" type="PackedScene" id=1]
 [ext_resource path="res://escenas/zombie/zombie.tscn" type="PackedScene" id=2]
+[ext_resource path="res://escenas/barricada/barricada.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,6 +10,10 @@
 position = Vector2( 37.0041, 36.5744 )
 
 [node name="pinchos" parent="." instance=ExtResource( 1 )]
-position = Vector2( 371.776, 46.0448 )
-scale = Vector2( 0.5, 0.5 )
-orientacion = -1
+position = Vector2( 357.754, 37.1532 )
+scale = Vector2( 2, 2 )
+
+[node name="barricada" parent="." instance=ExtResource( 3 )]
+position = Vector2( 361.218, 37.6731 )
+scale = Vector2( 2, 2 )
+[connection signal="barricada_destruida" from="barricada" to="pinchos" method="_on_barricada_barricada_destruida"]

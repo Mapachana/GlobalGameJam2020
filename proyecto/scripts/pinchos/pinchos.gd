@@ -80,6 +80,11 @@ func _sacar_pinchos():
 	mover_pinchos = true
 
 # Cuanto un zombie entra dentro 
-func _on_Pinchos_body_entered(body : Zombie):
-	body.die()
-	emit_signal("zombie_hit")
+func _on_pinchos_body_entered(body : Zombie):
+	if body:
+		body.die()
+		emit_signal("zombie_hit")
+
+# Cuando se destruye la barricada asociada a los pinchos
+func _on_barricada_barricada_destruida():
+	self.queue_free()

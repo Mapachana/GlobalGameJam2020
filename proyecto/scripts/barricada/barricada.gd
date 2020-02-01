@@ -19,9 +19,22 @@ func _ready():
 #func _process(delta):
 #	pass
 
+# Cuando un zombie ataca la barricada
+func hit(dmg):
+	# Si ha pasado el tiempo de espera
+	if $Timer2.is_stopped():
+		# Resta un punto
+		vida = clamp(vida - dmg, 0, VIDA_MAX)
+		if vida == 0:
+			emit_signal("barricada_destruida")
+			self.queue_free()
+		$Timer2.start(TIEMPO_ESPERA)
 
+# Cuando el jugador entra en el area
 func _on_Area2D_body_entered(body : Player):
-	if body.is_repairing and $Timer.is_stopped():
-		vida = clamp(vida + 1, 0, VIDA_MAX)
-		$Timer.start(TIEMPO_ESPERA)
-		
+	if body:
+		# Si está reparado
+		if body.is_repairing and $Timer.is_stopped():
+			vida = clamp(vida + 1, 0, VIDA_MAX)
+			$Timer.start(TIEMPO_ESPERA)
+			
