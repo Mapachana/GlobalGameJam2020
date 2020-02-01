@@ -16,6 +16,11 @@ var dmg = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if (direction == -1):
+		$Sprite.set_flip_h(true)
+	else:
+		$Sprite.set_flip_h(false)
+	$AnimationPlayer.play("walk")
 	pass # Replace with function body.
 
 
@@ -30,7 +35,7 @@ func _process(delta):
 func set_direction(dir):
 	if direction != dir:
 		direction = dir
-		$Sprite.flip_h
+		$Sprite.set_flip_h(true)
 	
 # Mata al zombie
 func die():
