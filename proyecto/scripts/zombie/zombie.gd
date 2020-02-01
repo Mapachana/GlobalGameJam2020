@@ -39,6 +39,8 @@ func set_direction(dir):
 	
 # Mata al zombie
 func die():
+	set_collision_layer_bit(0, false)
+	set_collision_mask_bit(0, false)
 	$Timer_death.start(0.6)
 	set_direction(-1 * direction)
 	$AnimationPlayer.play("die")
