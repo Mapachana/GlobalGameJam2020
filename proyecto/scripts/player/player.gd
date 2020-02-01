@@ -6,7 +6,7 @@ class_name Player
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 0.10
+var speed = 3
 var vel = Vector2(0.0,0.0)
 var anim
 var is_repairing = false
@@ -55,7 +55,6 @@ func repair():
 		#change_anim("repair")
 	else:
 		is_repairing = false
-		print($AnimationPlayer.current_animation)
 		if $AnimationPlayer.current_animation == "repair_right":
 			change_anim("walk_right")
 		#change_anim("walk")
