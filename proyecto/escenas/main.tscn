@@ -16,12 +16,9 @@ texture = ExtResource( 1 )
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2( 2, 2 )
 
-[node name="player" parent="Node2D" instance=ExtResource( 5 )]
-position = Vector2( 210.464, 278.267 )
-scale = Vector2( 2, 2 )
-
 [node name="torre" parent="Node2D" instance=ExtResource( 2 )]
-position = Vector2( 261.384, 267.656 )
+position = Vector2( 259.634, 236.165 )
+scale = Vector2( 2, 2 )
 
 [node name="barricada" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 72.7919, 282.218 )
@@ -36,3 +33,7 @@ scale = Vector2( 0.7, 0.7 )
 [node name="barricade_button2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 366.408, 290.669 )
 scale = Vector2( 0.7, 0.7 )
+
+[node name="player" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( 210.464, 278.267 )
+scale = Vector2( 2, 2 )
