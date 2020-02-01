@@ -39,5 +39,11 @@ func set_direction(dir):
 	
 # Mata al zombie
 func die():
-	self.queue_free()
+	$Timer_death.start(0.6)
+	set_direction(-1 * direction)
+	$AnimationPlayer.play("die")
+	
 	emit_signal("zombie_died")
+
+func _on_Timer_death_timeout():
+	self.queue_free()
