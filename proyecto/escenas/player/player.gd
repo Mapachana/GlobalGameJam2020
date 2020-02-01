@@ -6,10 +6,13 @@ class_name Player
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 5
+var speed = 1.0
 var vel = Vector2(0.0,0.0)
 var anim
 var is_repairing = false
+
+# Señal para reparar
+signal repairing
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +44,7 @@ func move():
 func repair():
 	if (Input.is_action_pressed("ui_accept")):
 		is_repairing = true
+		emit_signal("repairing")
 		#change_anim("repair")
 	else:
 		is_repairing = false
