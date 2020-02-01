@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://escenas/player/player.gd"
+"path": "res://scripts/player/player.gd"
 }, {
 "base": "Area2D",
 "class": "Torre",
