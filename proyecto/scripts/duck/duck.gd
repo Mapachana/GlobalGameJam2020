@@ -42,7 +42,7 @@ func _process(delta):
 				$AnimationPlayer.play("lucky_duck_3")
 
 func explode_duck():
-	$Timer_explosion.start(4)
+	$Timer_explosion.start(1)
 	$AnimationPlayer.play("explode")
 
 func _on_Timer_explosion_timeout():
