@@ -12,4 +12,4 @@ dest_files=[ "res://.import/ana.ogg-4ab20d12d82b75f5943fbb1eeb634470.oggstr" ]
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=24.0

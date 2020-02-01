@@ -23,3 +23,8 @@ func _on_Button_pressed():
 func _on_Button2_pressed():
 	ScManager.dificil = true
 	ScManager.goto_scene("res://escenas/main.tscn")
+
+
+func _on_Button3_pressed():
+	get_tree().quit()
+	pass # Replace with function body.

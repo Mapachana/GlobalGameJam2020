@@ -1,14 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://img/rectangulonegro.png" type="Texture" id=1]
 [ext_resource path="res://MainTitle.gd" type="Script" id=2]
 [ext_resource path="res://img/progress_bar/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://img/progress_bar/twitter-app-icon-transparent-17.jpg.png" type="Texture" id=4]
 [ext_resource path="res://escenas/zombie/zombie.tscn" type="PackedScene" id=5]
+[ext_resource path="res://img/progress_bar/fuente_tw.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 11
+font_data = ExtResource( 6 )
 
 [node name="Win" type="TextureRect"]
 margin_left = -114.738
@@ -65,8 +70,9 @@ margin_left = -53.824
 margin_top = 47.1707
 margin_right = 96.176
 margin_bottom = 76.1707
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.968627, 0.968627, 0.968627, 1 )
-text = "@Ana_B_R_A @MiguelLentisco @Victillos1920 @JDuckito"
+text = "@Ana_B_R_A @MiguelLentisco @Victillos1920 @JDuckito @Victor_Seven7"
 align = 1
 valign = 1
 __meta__ = {
@@ -78,28 +84,45 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -120.0
-margin_top = -16.0
-margin_right = -23.0
-margin_bottom = 16.0
-text = "Try again"
+margin_left = -142.525
+margin_top = -54.4255
+margin_right = -37.5253
+margin_bottom = -22.4255
+text = "Try again: easy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button2" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 30.0
+margin_left = 33.975
+margin_top = -55.7505
+margin_right = 137.975
+margin_bottom = -23.7505
+text = "Try again: hard"
+
+[node name="Button3" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
 margin_top = -16.0
-margin_right = 127.0
+margin_right = 52.5
 margin_bottom = 16.0
-text = "Try again"
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 108.122
-margin_top = 346.343
-margin_right = 620.122
-margin_bottom = 858.343
+margin_left = 79.0113
+margin_top = 348.055
+margin_right = 591.011
+margin_bottom = 860.055
 rect_scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 4 )
 
@@ -107,3 +130,5 @@ texture = ExtResource( 4 )
 position = Vector2( 45.2138, 323.325 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]

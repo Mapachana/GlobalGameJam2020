@@ -36,7 +36,7 @@ func _on_barricada_barricada_destruida():
 func _on_torre_fin_victoria():
 	ScManager.score += 500
 	ScManager.score += int(500 / (OS.get_unix_time() - time_start))
-	if ScManager.dificl:
+	if ScManager.dificil:               
 		ScManager.score += 1000
 	$Label.text = "Score: " + str(ScManager.score)
 	ScManager.goto_scene("res://escenas/GameOver_win.tscn")
