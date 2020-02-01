@@ -5,6 +5,7 @@
 [ext_resource path="res://escenas/barricada/barricada.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( -3, 67.9999 )
 
 [node name="zombie" parent="." instance=ExtResource( 2 )]
 position = Vector2( 37.0041, 36.5744 )

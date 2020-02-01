@@ -4,7 +4,8 @@ class_name Barricada
 
 # Cuando se destruye una barricada
 signal barricada_destruida
-
+#señal cuando cambia la vida
+signal barricada_health_change
 # Vida máxima
 const VIDA_MAX = 3
 # Tiempo de espera para reparación
@@ -14,7 +15,7 @@ export var vida = VIDA_MAX
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	emit_signal("barricada_health_change", vida)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -26,6 +27,7 @@ func hit(dmg):
 	if $Timer2.is_stopped():
 		# Resta un punto
 		vida = clamp(vida - dmg, 0, VIDA_MAX)
+		emit_signal("barricada_health_change", vida)
 		if vida == 0:
 			emit_signal("barricada_destruida")
 			self.queue_free()
@@ -37,5 +39,6 @@ func _on_Area2D_body_entered(body : Player):
 		# Si está reparado
 		if body.is_repairing and $Timer.is_stopped():
 			vida = clamp(vida + 1, 0, VIDA_MAX)
+			emit_signal("barricad_health_change", vida)
 			$Timer.start(TIEMPO_ESPERA)
 			

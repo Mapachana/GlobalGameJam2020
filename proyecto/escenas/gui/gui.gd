@@ -1,6 +1,5 @@
 extends MarginContainer
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -13,7 +12,6 @@ func _ready():
 	#var player_max_health = $"../Characters/Player".max_health
 	#$Bar/Gauge.max_value = player_max_health
 	$Bar/Gauge.max_value = 100
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +19,6 @@ func _process(delta):
 	var round_value = round(animated_health)
 	$Bar/number.text = str(round_value)
 	$Bar/Gauge.value = round_value
-	pass
 
 func update_health(new_value):
 	$Bar/number.text = str(new_value)
@@ -31,4 +28,6 @@ func update_health(new_value):
 
 func _on_Torre_tower_health_change(new_tower_health):
 	update_health(new_tower_health)
-	pass # Replace with function body.
+
+func _on_barricada_barricada_health_change(new_bar_health):
+	update_health(new_bar_health)

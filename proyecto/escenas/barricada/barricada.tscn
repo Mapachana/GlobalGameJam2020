@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://img/barricada/Barricada.png" type="Texture" id=1]
 [ext_resource path="res://scripts/barricada/barricada.gd" type="Script" id=2]
+[ext_resource path="res://escenas/gui/gui.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.5438, 10 )
@@ -26,4 +27,12 @@ one_shot = true
 
 [node name="Timer2" type="Timer" parent="."]
 one_shot = true
+
+[node name="GUI" parent="." instance=ExtResource( 3 )]
+margin_left = -33.366
+margin_top = -33.7632
+margin_right = 448.634
+margin_bottom = 19.2368
+rect_scale = Vector2( 0.15, 0.15 )
+[connection signal="barricada_health_change" from="." to="GUI" method="_on_barricada_barricada_health_change"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

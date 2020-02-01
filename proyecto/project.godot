@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Zombie",
 "language": "GDScript",
 "path": "res://scripts/zombie/zombie.gd"
+}, {
+"base": "Area2D",
+"class": "barricade_button",
+"language": "GDScript",
+"path": "res://scripts/barricade_button/barricade_button.gd"
 } ]
 _global_script_class_icons={
 "Barricada": "",
 "Pinchos": "",
 "Player": "",
-"Zombie": ""
+"Zombie": "",
+"barricade_button": ""
 }
 
 [application]
