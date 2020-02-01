@@ -1,9 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/barricade_button/barricade_button.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://img/barricade_button/burricade_button.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 37.7481, 34.0929 )
 
 [node name="barricade_button" type="Area2D"]
 position = Vector2( 34.9068, 36.4935 )

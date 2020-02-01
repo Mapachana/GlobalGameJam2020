@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://escenas/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://escenas/pinchos/pinchos.tscn" type="PackedScene" id=2]
+[ext_resource path="res://escenas/barricade_button/barricade_button.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="barricade_button" parent="." instance=ExtResource( 3 )]
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 71.0682, 37.3074 )
+
+[node name="pinchos" parent="." instance=ExtResource( 2 )]
+position = Vector2( 109.148, 140.441 )
+[connection signal="barricade_button_pressed" from="barricade_button" to="pinchos" method="_on_barricade_button_barricade_button_pressed"]
+[connection signal="body_exited" from="barricade_button" to="barricade_button" method="_on_barricade_button_body_exited"]
+[connection signal="repairing" from="player" to="barricade_button" method="_on_player_repairing"]

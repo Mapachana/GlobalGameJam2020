@@ -7,11 +7,14 @@ signal barricade_button_pressed
 # Tiempo de enfriamiento 
 export var TIEMPO_ESPERA = 3
 
-# 
+# Booleanas
+# Botón pulsado
 var pressed = false
+# Jugador sobre botón
+var player_near = false
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,14 +23,22 @@ func _ready():
 
 
 func _on_barricade_button_body_entered(body : Player):
+	player_near = true
+	print("in")
+
+func _on_barricade_button_body_exited(body : Player):
+	player_near = false
+	print("out")
+
+func _on_player_repairing():
 	# Si el jugador está pulsando el botón de reparar se emite la señal para 
 	# activar los pinchos a estos, con un cooldown hasta poder volver a pulsarlo
-	if body.is_repairing:
-		if not pressed:
-			emit_signal("barricade_button_pressed")
-			pressed = true
-			$Timer.start(TIEMPO_ESPERA)
+	if player_near and not pressed:
+		emit_signal("barricade_button_pressed")
+		pressed = true
+		$Timer.start(TIEMPO_ESPERA)
 
 
 func _on_Timer_timeout():
+	print("timeout") 	
 	pressed = false
