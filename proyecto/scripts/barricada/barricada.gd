@@ -7,16 +7,17 @@ signal barricada_destruida
 #señal cuando cambia la vida
 signal barricada_health_change
 # Vida máxima
-const VIDA_MAX = 3
+export var VIDA_MAX = 10
 # Tiempo de espera para reparación
 const TIEMPO_ESPERA = 2
 # La vida de la barricada
-export var vida = VIDA_MAX
+var vida = 0
 # Si el cuerpo está dentro
 var body_inside = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	vida = VIDA_MAX
 	emit_signal("barricada_health_change", vida)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,7 +49,7 @@ func _on_Area2D_body_exited(body : Player):
 			
 func _on_player_repairing():
 	if body_inside and $Timer.is_stopped():
-		vida = clamp(vida + 1, 0, VIDA_MAX)
+		vida = clamp(vida + 2, 0, VIDA_MAX)
 		emit_signal("barricada_health_change", vida)
 		$Timer.start(TIEMPO_ESPERA)
 

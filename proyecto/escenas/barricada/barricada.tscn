@@ -52,7 +52,7 @@ margin_top = -33.7632
 margin_right = 448.634
 margin_bottom = 19.2368
 rect_scale = Vector2( 0.15, 0.15 )
-max_health = 3
+max_health = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/explode = SubResource( 2 )

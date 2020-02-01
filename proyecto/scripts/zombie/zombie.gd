@@ -12,7 +12,7 @@ var speed = 15
 # Direction (right by default)
 var direction = 1
 var colision
-var dmg = 1
+var dmg = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

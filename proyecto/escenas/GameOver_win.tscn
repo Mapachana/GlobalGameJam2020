@@ -10,7 +10,7 @@
 size = 29
 font_data = ExtResource( 3 )
 
-[node name="MainTitle" type="TextureRect"]
+[node name="Win" type="TextureRect"]
 margin_left = -114.738
 margin_top = -196.165
 margin_right = 485.262
