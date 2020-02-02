@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 5, 5 ) ]
+"values": [ Vector2( 4, 4 ), Vector2( 5, 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -57,7 +57,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 1 ), ExtResource( 3 ) ]
+"values": [ ExtResource( 4 ), ExtResource( 3 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Sprite:hframes")
@@ -184,8 +184,13 @@ lucky_duck = true
 position = Vector2( 0.084, -1.706 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/explode = SubResource( 2 )
@@ -196,8 +201,4 @@ anims/panic = SubResource( 6 )
 
 [node name="Timer_explosion" type="Timer" parent="."]
 one_shot = true
-
-[node name="Sprite2" type="Sprite" parent="."]
-scale = Vector2( 4, 4 )
-texture = ExtResource( 4 )
 [connection signal="timeout" from="Timer_explosion" to="." method="_on_Timer_explosion_timeout"]

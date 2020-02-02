@@ -24,7 +24,6 @@ func change_health(health):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var round_value = round(animated_health)
-	$Bar/number.text = str(round_value)
 	$Bar/Gauge.value = round_value
 
 func update_health(new_value):

@@ -9,7 +9,8 @@ func _ready():
 	if self.name != "MainTitle":
 		$Label3.text = "Score: " + str(ScManager.score)
 		if self.name == "Win":	
-			$duck/Sprite2.hide()
+			$duck/Sprite.hide()
+			$duck/Sprite2.show()
 	set_process(true)
 
 #Check button press

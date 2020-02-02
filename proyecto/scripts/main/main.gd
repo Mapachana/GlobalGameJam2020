@@ -64,6 +64,8 @@ func _on_pinchos_hit_zombie():
 		# Hacer pato
 		pato = plantilla_pato.instance()
 		$pato.add_child(pato)
+		$pato/duck/Sprite2.hide()
+		$pato/duck/Sprite.show()
 		pato.lucky_duck = true
 		
 func _on_player_pato_presionado():
