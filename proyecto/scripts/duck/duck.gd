@@ -19,8 +19,6 @@ func _ready():
 	# If lucky duck remove collisions
 	if lucky_duck:
 		speed = 400
-		set_collision_layer_bit(0, false)
-		set_collision_mask_bit(0, false)
 	rng.randomize()
 
 
