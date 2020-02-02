@@ -93,7 +93,7 @@ autoplay = true
 position = Vector2( 1090, 160 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2( 6, 28 )
+scale = Vector2( 6, 14 )
 shape = SubResource( 2 )
 
 [node name="Explosion" type="Timer" parent="."]
@@ -104,15 +104,15 @@ one_shot = true
 [connection signal="fin_victoria" from="Node2D/torre" to="." method="_on_torre_fin_victoria"]
 [connection signal="barricada_destruida" from="Node2D/barricada" to="." method="_on_barricada_barricada_destruida"]
 [connection signal="barricada_destruida" from="Node2D/barricada" to="Node2D/pinchos" method="_on_barricada_barricada_destruida"]
-[connection signal="barricada_destruida" from="Node2D/barricada2" to="." method="_on_barricada_barricada_destruida"]
 [connection signal="barricada_destruida" from="Node2D/barricada2" to="Node2D/pinchos2" method="_on_barricada_barricada_destruida"]
+[connection signal="barricada_destruida" from="Node2D/barricada2" to="." method="_on_barricada_barricada_destruida"]
 [connection signal="barricade_button_pressed" from="Node2D/barricade_button" to="Node2D/pinchos" method="_on_barricade_button_barricade_button_pressed"]
 [connection signal="barricade_button_pressed" from="Node2D/barricade_button2" to="Node2D/pinchos2" method="_on_barricade_button_barricade_button_pressed"]
 [connection signal="pato_presionado" from="Node2D/player" to="." method="_on_player_pato_presionado"]
-[connection signal="repairing" from="Node2D/player" to="Node2D/torre" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricada" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button2" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button" method="_on_player_repairing"]
-[connection signal="repairing" from="Node2D/player" to="Node2D/barricada" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/torre" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricada2" method="_on_player_repairing"]
 [connection signal="timeout" from="Node2D/Node2D/Timer" to="Node2D/Node2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Node2D/Timer_endgame" to="." method="_on_Timer_endgame_timeout"]
