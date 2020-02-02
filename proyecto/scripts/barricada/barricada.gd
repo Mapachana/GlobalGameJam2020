@@ -73,8 +73,8 @@ func _on_Area2D_body_exited(body : Player):
 func _on_player_repairing(player : Player):
 	if $Timer.is_stopped():
 		if (player.nombre == "player" and player_near) or (player.nombre == "player2" and player1_near) or (player.nombre == "player3" and player2_near):
-			update_sprite()
 			vida = clamp(vida + 2, 0, VIDA_MAX)
+			update_sprite()
 			emit_signal("barricada_health_change", vida)
 			$Timer.start(TIEMPO_ESPERA)
 	
