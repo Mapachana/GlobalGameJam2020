@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://img/fondo/brick-wall-1834446_1920.jpg" type="Texture" id=1]
 [ext_resource path="res://escenas/torre/torre.tscn" type="PackedScene" id=2]
@@ -16,8 +16,6 @@ size = 40
 font_data = ExtResource( 9 )
 
 [sub_resource type="RectangleShape2D" id=2]
-
-[sub_resource type="RectangleShape2D" id=3]
 
 [node name="Node2D" type="Node2D" groups=[
 "enemies",
@@ -66,17 +64,10 @@ scale = Vector2( 0.7, 0.7 )
 [node name="player" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 210.464, 278.267 )
 scale = Vector2( 2, 2 )
-textura = null
-left = null
-right = null
-reparar = null
-pato = null
-nombre = null
 
 [node name="player2" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 210.464, 278.267 )
 scale = Vector2( 2, 2 )
-textura = null
 left = "ui_left_1"
 right = "ui_right_1"
 reparar = "ui_reparar_1"
@@ -151,13 +142,6 @@ shape = SubResource( 2 )
 
 [node name="Explosion" type="Timer" parent="."]
 one_shot = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 530, 537 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-scale = Vector2( 2.5, 6 )
-shape = SubResource( 3 )
 [connection signal="hit_zombie" from="Node2D/pinchos" to="." method="_on_pinchos_hit_zombie"]
 [connection signal="hit_zombie" from="Node2D/pinchos2" to="." method="_on_pinchos_hit_zombie"]
 [connection signal="body_exited" from="Node2D/torre" to="Node2D/torre" method="_on_torre_body_exited"]
