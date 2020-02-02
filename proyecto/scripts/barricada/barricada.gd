@@ -37,6 +37,8 @@ func hit(dmg):
 	if $Timer2.is_stopped():
 		# Resta un punto
 		vida = clamp(vida - dmg, 0, VIDA_MAX)
+		update_sprite()
+		
 		emit_signal("barricada_health_change", vida)
 		if vida == 0:
 			set_collision_layer_bit(0, false)
@@ -57,7 +59,15 @@ func _on_Area2D_body_exited(body : Player):
 func _on_player_repairing():
 	if body_inside and $Timer.is_stopped():
 		vida = clamp(vida + 2, 0, VIDA_MAX)
+		update_sprite()
 		emit_signal("barricada_health_change", vida)
 		$Timer.start(TIEMPO_ESPERA)
 
+func update_sprite():
+	if vida == VIDA_MAX:
+		$Sprite.frame = 0
+	elif vida >= VIDA_MAX / 2:
+		$Sprite.frame = 1
+	elif vida < VIDA_MAX / 2:
+		$Sprite.frame = 2
 
