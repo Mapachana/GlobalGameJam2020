@@ -72,8 +72,10 @@ func _on_player_pato_presionado():
 
 
 func _on_Area2D_body_entered(body):
-	moba = false
-	pato.queue_free()
+	print("entro")
+	if moba:
+		moba = false
+		pato.queue_free()
 
 
 func _on_Explosion_timeout():

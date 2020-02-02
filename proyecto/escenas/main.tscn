@@ -90,14 +90,14 @@ stream = ExtResource( 10 )
 autoplay = true
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 1022.25, 160 )
+position = Vector2( 1090, 160 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 70, 0 )
-scale = Vector2( 6, 6 )
+scale = Vector2( 6, 28 )
 shape = SubResource( 2 )
 
 [node name="Explosion" type="Timer" parent="."]
+one_shot = true
 [connection signal="hit_zombie" from="Node2D/pinchos" to="." method="_on_pinchos_hit_zombie"]
 [connection signal="hit_zombie" from="Node2D/pinchos2" to="." method="_on_pinchos_hit_zombie"]
 [connection signal="body_exited" from="Node2D/torre" to="Node2D/torre" method="_on_torre_body_exited"]
