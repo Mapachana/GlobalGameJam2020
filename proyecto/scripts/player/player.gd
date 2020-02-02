@@ -11,6 +11,10 @@ var vel = Vector2(0.0,0.0)
 var anim
 var is_repairing = false
 
+# Posibles texturas
+var player_tex1 = preload("res://img/player/player_completo.png")
+var player_tex2 = preload("res://img/player/player2_completo.png")
+
 # Señal para reparar
 signal repairing
 signal pato_presionado
@@ -81,3 +85,8 @@ func change_anim(new_anim):
 		anim = new_anim
 		$AnimationPlayer.play(new_anim)
 
+func set_sprite(selected):
+	if selected == 1:
+		$Sprite.set_texture(player_tex1)
+	elif selected == 2:
+		$Sprite.set_texture(player_tex2)
