@@ -14,7 +14,10 @@ const TIEMPO_ESPERA = 2
 # La vida de la barricada
 var vida = 0
 # Si el cuerpo está dentro
-var body_inside = false
+var player_near = false
+var player1_near = false
+var player2_near = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,18 +54,30 @@ func hit(dmg):
 # Cuando el jugador entra en el area
 func _on_Area2D_body_entered(body : Player):
 	if body:
-		body_inside = true
+		if body.nombre == "player":
+			player_near = true
+		elif body.nombre == "player2":
+			player1_near = true
+		elif body.nombre == "player3":
+			player2_near = true
 			
 func _on_Area2D_body_exited(body : Player):
 	if body:
-		body_inside = false
+		if body.nombre == "player":
+			player_near = false
+		elif body.nombre == "player2":
+			player1_near = false
+		elif body.nombre == "player3":
+			player2_near = false
 			
 func _on_player_repairing(player : Player):
-	if body_inside and $Timer.is_stopped():
-		vida = clamp(vida + 2, 0, VIDA_MAX)
-		update_sprite()
-		emit_signal("barricada_health_change", vida)
-		$Timer.start(TIEMPO_ESPERA)
+	if $Timer.is_stopped():
+		if (player.nombre == "player" and player_near) or (player.nombre == "player2" and player1_near) or (player.nombre == "player3" and player2_near):
+			update_sprite()
+			vida = clamp(vida + 2, 0, VIDA_MAX)
+			emit_signal("barricada_health_change", vida)
+			$Timer.start(TIEMPO_ESPERA)
+	
 
 func update_sprite():
 	if vida == VIDA_MAX:

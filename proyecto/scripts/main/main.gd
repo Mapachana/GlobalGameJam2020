@@ -63,7 +63,6 @@ func _ready():
 #func _process(delta):
 	#pass
 
-
 func _on_barricada_barricada_destruida(barricada : Barricada):
 	if barricada.nombre == "barricada2":
 		ScManager.score2 = clamp(ScManager.score2 - 500, 0, 10000000)
@@ -93,10 +92,10 @@ func _on_Timer_endgame_timeout():
 
 
 func _on_pinchos_hit_zombie(name):
-	if name == "pinchos":
+	if name == "player2":
 		ScManager.score1 += 10
 		$Label3.text = "Score 1: " + str(ScManager.score1)
-	else:
+	elif name == "player3":
 		ScManager.score2 += 10
 		$Label2.text = "Score 2: " + str(ScManager.score2)
 	ScManager.score += 10

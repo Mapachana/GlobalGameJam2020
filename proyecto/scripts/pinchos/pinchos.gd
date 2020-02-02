@@ -27,6 +27,8 @@ var mov_adelante : int = 1
 # Desplazamiento de los pinchos
 var desp : float = 0
 
+var player_name = "player"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Posicion original y máxima
@@ -73,14 +75,15 @@ func _process(delta):
 			mover_pinchos = false	
 
 # Activar los pinchos (moverlos)
-func _on_barricade_button_barricade_button_pressed():
+func _on_barricade_button_barricade_button_pressed(nombre):
+	player_name = nombre
 	mover_pinchos = true
 
 # Cuanto un zombie entra dentro 
 func _on_pinchos_body_entered(body : Zombie):
 	if body:
 		body.die()
-		emit_signal("hit_zombie", self.name)
+		emit_signal("hit_zombie", player_name)
 
 # Cuando se destruye la barricada asociada a los pinchos
 func _on_barricada_barricada_destruida(_barricada):
