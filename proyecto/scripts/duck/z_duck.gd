@@ -12,7 +12,7 @@ export var speed = 15
 func _ready():
 	if direction == -1:
 		$Sprite.set_flip_h(true)
-	$AnimationPlayer.play("walk")
+	#$AnimationPlayer.play("walk")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
