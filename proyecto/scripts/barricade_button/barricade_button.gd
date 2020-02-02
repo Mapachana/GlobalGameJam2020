@@ -32,7 +32,7 @@ func _on_barricade_button_body_exited(body : Player):
 	if body:
 		player_near = false
 
-func _on_player_repairing():
+func _on_player_repairing(body : Player):
 	# Si el jugador está pulsando el botón de reparar se emite la señal para 
 	# activar los pinchos a estos, con un cooldown hasta poder volver a pulsarlo
 	if player_near and not pressed:

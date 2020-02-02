@@ -113,7 +113,7 @@ func _on_pinchos_hit_zombie(name):
 		$pato.add_child(pato)
 		pato.lucky_duck = true
 		
-func _on_player_pato_presionado():
+func _on_player_pato_presionado(player : Player):
 	if moba:
 		moba = false
 		pato.explode_duck()

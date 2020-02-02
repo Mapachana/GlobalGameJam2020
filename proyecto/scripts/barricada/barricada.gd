@@ -56,7 +56,7 @@ func _on_Area2D_body_exited(body : Player):
 	if body:
 		body_inside = false
 			
-func _on_player_repairing():
+func _on_player_repairing(player : Player):
 	if body_inside and $Timer.is_stopped():
 		vida = clamp(vida + 2, 0, VIDA_MAX)
 		update_sprite()

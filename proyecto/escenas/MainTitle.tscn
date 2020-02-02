@@ -15,13 +15,13 @@ font_data = ExtResource( 3 )
 size = 11
 font_data = ExtResource( 6 )
 
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -78,7 +78,7 @@ margin_left = 140.0
 margin_top = 245.0
 margin_right = 237.0
 margin_bottom = 277.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Easy"
 
 [node name="Button2" type="Button" parent="."]
@@ -86,7 +86,7 @@ margin_left = 360.0
 margin_top = 245.0
 margin_right = 457.0
 margin_bottom = 277.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Hard"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -97,7 +97,7 @@ margin_left = 250.0
 margin_top = 245.0
 margin_right = 347.0
 margin_bottom = 277.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Multi"
 __meta__ = {
 "_edit_use_anchors_": false
