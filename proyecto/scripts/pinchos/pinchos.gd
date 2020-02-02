@@ -80,7 +80,7 @@ func _on_barricade_button_barricade_button_pressed():
 func _on_pinchos_body_entered(body : Zombie):
 	if body:
 		body.die()
-		emit_signal("hit_zombie")
+		emit_signal("hit_zombie", self.name)
 
 # Cuando se destruye la barricada asociada a los pinchos
 func _on_barricada_barricada_destruida():

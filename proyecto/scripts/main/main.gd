@@ -19,9 +19,27 @@ func _ready():
 	moba = false
 	rng.randomize()
 	ScManager = get_node("/root/Global")
+	ScManager.score = 0
+	ScManager.score1 = 0
+	ScManager.score2 = 0
 	time_start = OS.get_unix_time()
 	$Label.text = "Score: 0"
-	if ScManager.dificil:
+	$Label2.text = "Score 2: 0"
+	$Label3.text = "Score 1: 0"
+	$Label2.hide()
+	$Label3.hide()
+	if ScManager.multi:
+		$Node2D/barricada.change_health(6)
+		$Node2D/barricada2.change_health(6)
+		$Node2D/Node2D.min_t = 1.5
+		$Node2D/Node2D.max_t = 3.5
+		prob_moba = 0.95
+		$Label.hide()
+		$Label2.show()
+		$Label3.show()
+		$Label.text ="Score 1: 0"
+		
+	elif ScManager.dificil:
 		$Node2D/barricada.change_health(8)
 		$Node2D/barricada2.change_health(8)
 		$Node2D/Node2D.min_t = 2.5
@@ -45,16 +63,28 @@ func _on_barricada_barricada_destruida():
 func _on_torre_fin_victoria():
 	ScManager.score += 500
 	ScManager.score += int(500 / (OS.get_unix_time() - time_start))
+	ScManager.score1 += 500
+	ScManager.score1 += int(500 / (OS.get_unix_time() - time_start))
+	ScManager.score2 += 500
+	ScManager.score2 += int(500 / (OS.get_unix_time() - time_start))	
 	if ScManager.dificil:               
 		ScManager.score += 1000
 	$Label.text = "Score: " + str(ScManager.score)
+	$Label3.text = "Score 1: " + str(ScManager.score)
+	$Label2.text = "Score 2: " + str(ScManager.score)	
 	ScManager.goto_scene("res://escenas/GameOver_win.tscn")
 
 func _on_Timer_endgame_timeout():
 	ScManager.goto_scene("res://escenas/GameOver_lose.tscn")
 
 
-func _on_pinchos_hit_zombie():
+func _on_pinchos_hit_zombie(name):
+	if name == "pinchos":
+		ScManager.score1 += 10
+		$Label3.text = "Score 1: " + str(ScManager.score1)
+	else:
+		ScManager.score2 += 10
+		$Label2.text = "Score 2: " + str(ScManager.score2)
 	ScManager.score += 10
 	$Label.text = "Score: " + str(ScManager.score)
 	if not moba and rng.randf_range(0, 1) > prob_moba:

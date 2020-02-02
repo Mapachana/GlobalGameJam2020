@@ -75,8 +75,30 @@ max_t = 5
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 60.0
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 60.0
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 750.0
+margin_top = 10.0
+margin_right = 790.0
+margin_bottom = 56.0
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
