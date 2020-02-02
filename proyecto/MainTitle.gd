@@ -13,6 +13,9 @@ func _ready():
 		$Label3.show()
 		$Label4.hide()
 		$Label5.hide()
+		if self.name == "Win":
+			$duck/Sprite.hide()
+			$duck/Sprite2.show()
 		if ScManager.multi:
 			$Label3.hide()
 			$Label4.show()

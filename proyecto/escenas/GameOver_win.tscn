@@ -196,7 +196,7 @@ direction = -1
 speed = 100
 
 [node name="duck" parent="." instance=ExtResource( 5 )]
-position = Vector2( 40, 340 )
+position = Vector2( 30.925, 339.917 )
 speed = 100
 lucky_duck = false
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

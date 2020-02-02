@@ -10,6 +10,8 @@ var vel = Vector2(0.0,0.0)
 var anim
 var is_repairing = false
 
+var ScManager = null
+
 # Posibles texturas
 var player_tex1 = preload("res://img/player/player_completo.png")
 var player_tex2 = preload("res://img/player/player2_completo.png")
@@ -29,6 +31,7 @@ export var nombre = "player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ScManager = get_node("/root/Global")
 	set_sprite(textura)
 	$AnimationPlayer.play("idle")
 	pass # Replace with function body.
@@ -61,6 +64,8 @@ func move():
 			change_anim("walk_right")
 	elif Input.is_action_pressed(pato):
 		emit_signal("pato_presionado", self)
+	elif Input.is_action_pressed("menu"):
+		ScManager.goto_scene("res://escenas/GameOver_lose.tscn")
 	elif (not is_repairing):
 		vel.x = 0
 		vel.y = 0

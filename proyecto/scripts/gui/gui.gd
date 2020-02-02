@@ -24,11 +24,10 @@ func change_health(health):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var round_value = round(animated_health)
-	$Bar/number.text = str(round_value)
 	$Bar/Gauge.value = round_value
 
 func update_health(new_value):
-	#$Bar/number.text = str(new_value)
+	$Bar/number.text = str(new_value)
 	tween.interpolate_property(self, "animated_health", animated_health, new_value, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	if not tween.is_active():
 		tween.start()

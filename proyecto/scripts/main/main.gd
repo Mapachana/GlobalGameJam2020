@@ -31,21 +31,21 @@ func _ready():
 	$Label2.hide()
 	$Label3.hide()
 	if ScManager.multi:
-		$Node2D/barricada.change_health(6)
-		$Node2D/barricada2.change_health(6)
+		$Node2D/barricada.change_health(4)
+		$Node2D/barricada2.change_health(4)
 		$Node2D/Node2D.min_t = 0.5
 		$Node2D/Node2D.max_t = 2.0
-		prob_moba = 0.95
+		prob_moba = 0.05
 		$Label.hide()
 		$Label2.show()
 		$Label3.show()
 		$Node2D/player.queue_free()
 	elif ScManager.dificil:
-		$Node2D/barricada.change_health(8)
-		$Node2D/barricada2.change_health(8)
-		$Node2D/Node2D.min_t = 2.5
-		$Node2D/Node2D.max_t = 4.5
-		prob_moba = 0.95
+		$Node2D/barricada.change_health(6)
+		$Node2D/barricada2.change_health(6)
+		$Node2D/Node2D.min_t = 2.4
+		$Node2D/Node2D.max_t = 4.3
+		prob_moba = 0.05
 		$Node2D/player2.queue_free()
 		$Node2D/player3.queue_free()
 		$StaticBody2D.queue_free()
@@ -54,7 +54,7 @@ func _ready():
 		$Node2D/barricada2.change_health(10)
 		$Node2D/Node2D.min_t = 3
 		$Node2D/Node2D.max_t = 5
-		prob_moba = 0.90
+		prob_moba = 0.10
 		$Node2D/player2.queue_free()
 		$Node2D/player3.queue_free()
 		$StaticBody2D.queue_free()
@@ -101,11 +101,13 @@ func _on_pinchos_hit_zombie(name):
 		$Label2.text = "Score 2: " + str(ScManager.score2)
 	ScManager.score += 10
 	$Label.text = "Score: " + str(ScManager.score)
-	if not moba and rng.randf_range(0, 1) > prob_moba:
+	if not moba and rng.randf_range(0, 1) <= prob_moba:
 		moba = true
 		# Hacer pato
 		pato = plantilla_pato.instance()
 		$pato.add_child(pato)
+		$pato/duck/Sprite2.hide()
+		$pato/duck/Sprite.show()
 		pato.lucky_duck = true
 		
 func _on_player_pato_presionado(player : Player):

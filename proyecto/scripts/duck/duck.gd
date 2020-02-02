@@ -18,7 +18,7 @@ func _ready():
 		$Sprite.set_flip_h(true)
 	# If lucky duck remove collisions
 	if lucky_duck:
-		speed = 400
+		speed = 200
 	rng.randomize()
 
 
