@@ -46,3 +46,7 @@ func explode_duck():
 func _on_Timer_explosion_timeout():
 	self.queue_free()
 	
+func cambiar_sprite():
+	$Sprite2.hide()
+	$Sprite.show()
+	
