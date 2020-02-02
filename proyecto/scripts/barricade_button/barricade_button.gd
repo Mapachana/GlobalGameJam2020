@@ -5,7 +5,7 @@ class_name barricade_button
 signal barricade_button_pressed
 
 # Tiempo de enfriamiento 
-export var TIEMPO_ESPERA = 2
+export var TIEMPO_ESPERA = 2.3
 
 # Booleanas
 # Botón pulsado
@@ -23,7 +23,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
 func _on_barricade_button_body_entered(body : Player):
 	if body:
 		player_near = true
@@ -32,7 +31,7 @@ func _on_barricade_button_body_exited(body : Player):
 	if body:
 		player_near = false
 
-func _on_player_repairing():
+func _on_player_repairing(body : Player):
 	# Si el jugador está pulsando el botón de reparar se emite la señal para 
 	# activar los pinchos a estos, con un cooldown hasta poder volver a pulsarlo
 	if player_near and not pressed:

@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 class_name Player
 
 # Declare member variables here. Examples:
@@ -13,14 +12,27 @@ var is_repairing = false
 
 var ScManager = null
 
+# Posibles texturas
+var player_tex1 = preload("res://img/player/player_completo.png")
+var player_tex2 = preload("res://img/player/player2_completo.png")
+export var textura = 1
+
 # Señal para reparar
 signal repairing
 signal pato_presionado
+
+export var left = "ui_left"
+export var right = "ui_right"
+export var reparar = "ui_accept"
+export var pato = "ui_pato"
+
+export var nombre = "player"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ScManager = get_node("/root/Global")
+	set_sprite(textura)
 	$AnimationPlayer.play("idle")
 	pass # Replace with function body.
 
@@ -31,27 +43,27 @@ func _process(delta):
 	move()
 	if is_repairing:
 		change_anim("repair_right")
-		emit_signal("repairing")
+		emit_signal("repairing", self)
 	move_and_collide(vel*delta)
 	pass
 
 func move():
-	if (Input.is_action_pressed("ui_right")):
+	if (Input.is_action_pressed(right)):
 		vel.x = speed
 		vel.y = 0
 		is_repairing = false
 		$Sprite.set_flip_h(false)
 		if $AnimationPlayer.current_animation != "walk_right":
 			change_anim("walk_right")
-	elif (Input.is_action_pressed("ui_left")):
+	elif (Input.is_action_pressed(left)):
 		vel.x = -speed
 		vel.y = 0
 		is_repairing = false
 		$Sprite.set_flip_h(true)
 		if $AnimationPlayer.current_animation != "walk_right":
 			change_anim("walk_right")
-	elif Input.is_action_pressed("ui_pato"):
-		emit_signal("pato_presionado")
+	elif Input.is_action_pressed(pato):
+		emit_signal("pato_presionado", self)
 	elif Input.is_action_pressed("menu"):
 		ScManager.goto_scene("res://escenas/GameOver_lose.tscn")
 	elif (not is_repairing):
@@ -65,7 +77,7 @@ func move():
 		change_anim("repair_right")
 		
 func repair():
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed(reparar):
 		is_repairing = true
 	else:
 		is_repairing = false
@@ -79,3 +91,8 @@ func change_anim(new_anim):
 		anim = new_anim
 		$AnimationPlayer.play(new_anim)
 
+func set_sprite(selected):
+	if selected == 1:
+		$Sprite.set_texture(player_tex1)
+	elif selected == 2:
+		$Sprite.set_texture(player_tex2)

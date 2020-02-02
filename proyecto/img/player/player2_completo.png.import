@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pinchos.png-d1f7a43c0cace8371b8ab2a563a4b202.stex"
+path="res://.import/player2_completo.png-54043765d4e5b816975952edd201749d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/pinchos/Pinchos.png"
-dest_files=[ "res://.import/Pinchos.png-d1f7a43c0cace8371b8ab2a563a4b202.stex" ]
+source_file="res://img/player/player2_completo.png"
+dest_files=[ "res://.import/player2_completo.png-54043765d4e5b816975952edd201749d.stex" ]
 
 [params]
 

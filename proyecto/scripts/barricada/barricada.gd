@@ -8,6 +8,7 @@ signal barricada_destruida
 signal barricada_health_change
 # Vida máxima
 export var VIDA_MAX = 10
+export var nombre = "barricada"
 # Tiempo de espera para reparación
 const TIEMPO_ESPERA = 2
 # La vida de la barricada
@@ -44,7 +45,7 @@ func hit(dmg):
 			set_collision_layer_bit(0, false)
 			set_collision_mask_bit(0, false)
 			$AnimationPlayer.play("explode")
-			emit_signal("barricada_destruida")
+			emit_signal("barricada_destruida", self)
 		$Timer2.start(TIEMPO_ESPERA)
 
 # Cuando el jugador entra en el area
@@ -56,7 +57,7 @@ func _on_Area2D_body_exited(body : Player):
 	if body:
 		body_inside = false
 			
-func _on_player_repairing():
+func _on_player_repairing(player : Player):
 	if body_inside and $Timer.is_stopped():
 		vida = clamp(vida + 2, 0, VIDA_MAX)
 		update_sprite()

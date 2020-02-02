@@ -27,7 +27,7 @@ func _process(delta):
 	var collision = move_and_collide(direction * velocity * speed * delta)
 	if collision:
 		direction *= -1
-		$Sprite.set_flip_h(!$Sprite.flip_h)
+		$Sprite2.set_flip_h(!$Sprite2.flip_h)
 		speed *= 1.5
 	if lucky_duck:
 		if animation_selected == 0:
@@ -45,4 +45,8 @@ func explode_duck():
 
 func _on_Timer_explosion_timeout():
 	self.queue_free()
+	
+func cambiar_sprite():
+	$Sprite2.hide()
+	$Sprite.show()
 	

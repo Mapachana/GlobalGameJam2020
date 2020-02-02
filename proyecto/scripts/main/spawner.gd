@@ -4,6 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var ScManager = null
 export var min_t = 2
 export var max_t = 10
 var n_zombie = 1
@@ -14,6 +15,7 @@ const zombie_plantilla = preload("res://escenas/zombie/zombie.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
+	ScManager = get_node("/root/Global")
 	poner_crono()
 
 
@@ -32,4 +34,6 @@ func _on_Timer_timeout():
 	if round(rng.randf_range(0,1)):
 		zom.position.x += 540
 		zom.set_direction(-1)
+	if ScManager.multi:
+		zom.speed += 25
 	zom.add_to_group("enemies")
