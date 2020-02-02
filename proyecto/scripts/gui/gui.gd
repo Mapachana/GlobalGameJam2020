@@ -28,7 +28,7 @@ func _process(delta):
 	$Bar/Gauge.value = round_value
 
 func update_health(new_value):
-	$Bar/number.text = str(new_value)
+	#$Bar/number.text = str(new_value)
 	tween.interpolate_property(self, "animated_health", animated_health, new_value, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	if not tween.is_active():
 		tween.start()

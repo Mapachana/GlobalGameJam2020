@@ -64,7 +64,7 @@ func _ready():
 	#pass
 
 
-func _on_barricada_barricada_destruida():
+func _on_barricada_barricada_destruida(barricada : Barricada):
 	$Node2D/Timer_endgame.start(1.5)
 
 func _on_torre_fin_victoria():

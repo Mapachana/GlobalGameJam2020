@@ -44,7 +44,7 @@ func hit(dmg):
 			set_collision_layer_bit(0, false)
 			set_collision_mask_bit(0, false)
 			$AnimationPlayer.play("explode")
-			emit_signal("barricada_destruida")
+			emit_signal("barricada_destruida", self)
 		$Timer2.start(TIEMPO_ESPERA)
 
 # Cuando el jugador entra en el area
