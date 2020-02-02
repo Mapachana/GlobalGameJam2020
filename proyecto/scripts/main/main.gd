@@ -48,7 +48,6 @@ func _ready():
 		prob_moba = 0.05
 		$Node2D/player2.queue_free()
 		$Node2D/player3.queue_free()
-		$StaticBody2D.queue_free()
 	else:
 		$Node2D/barricada.change_health(10)
 		$Node2D/barricada2.change_health(10)
@@ -57,7 +56,6 @@ func _ready():
 		prob_moba = 0.10
 		$Node2D/player2.queue_free()
 		$Node2D/player3.queue_free()
-		$StaticBody2D.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
