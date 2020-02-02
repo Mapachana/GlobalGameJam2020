@@ -11,6 +11,7 @@ var rng = RandomNumberGenerator.new()
 var moba = false
 var prob_moba
 const plantilla_pato = preload("res://escenas/duck/duck.tscn")
+const plantilla_player = preload("res://escenas/player/player.tscn")
 var pato
 
 
@@ -29,16 +30,6 @@ func _ready():
 	$Label.show()
 	$Label2.hide()
 	$Label3.hide()
-	$Node2D/player.show()
-	$Node2D/player.set_collision_layer_bit(0, true)
-	$Node2D/player.set_collision_mask_bit(0, true)
-	$Node2D/player2.hide()
-	$Node2D/player2.set_collision_layer_bit(0, false)
-	$Node2D/player2.set_collision_mask_bit(0, false)
-	$Node2D/player3.hide()
-	$Node2D/player3.set_collision_layer_bit(0, false)
-	$Node2D/player3.set_collision_mask_bit(0, false)
-	$Node2D
 	if ScManager.multi:
 		$Node2D/barricada.change_health(6)
 		$Node2D/barricada2.change_health(6)
@@ -48,28 +39,25 @@ func _ready():
 		$Label.hide()
 		$Label2.show()
 		$Label3.show()
-		$Node2D/player.hide()
-		$Node2D/player.set_collision_layer_bit(0, false)
-		$Node2D/player.set_collision_mask_bit(0, false)
-		$Node2D/player2.show()
-		$Node2D/player2.set_collision_layer_bit(0, true)
-		$Node2D/player2.set_collision_mask_bit(0, true)
-		$Node2D/player3.show()
-		$Node2D/player3.set_collision_layer_bit(0, true)
-		$Node2D/player3.set_collision_mask_bit(0, true)
-		
+		$Node2D/player.queue_free()
 	elif ScManager.dificil:
 		$Node2D/barricada.change_health(8)
 		$Node2D/barricada2.change_health(8)
 		$Node2D/Node2D.min_t = 2.5
 		$Node2D/Node2D.max_t = 4.5
 		prob_moba = 0.95
+		$Node2D/player2.queue_free()
+		$Node2D/player3.queue_free()
+		$StaticBody2D.queue_free()
 	else:
 		$Node2D/barricada.change_health(10)
 		$Node2D/barricada2.change_health(10)
 		$Node2D/Node2D.min_t = 3
 		$Node2D/Node2D.max_t = 5
 		prob_moba = 0.90
+		$Node2D/player2.queue_free()
+		$Node2D/player3.queue_free()
+		$StaticBody2D.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -115,6 +103,14 @@ func _on_pinchos_hit_zombie(name):
 		
 func _on_player_pato_presionado(player : Player):
 	if moba:
+		if player.nombre == "player2":
+			ScManager.score1 += 50
+			$Label3.text = "Score 1: " + str(ScManager.score1)
+		elif player.nombre == "player3":
+			ScManager.score2 += 50
+			$Label2.text = "Score 2: " + str(ScManager.score2)
+		ScManager.score += 50
+		$Label.text = "Score: " + str(ScManager.score)
 		moba = false
 		pato.explode_duck()
 		$Explosion.start(0.5)

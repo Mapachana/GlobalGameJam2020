@@ -11,6 +11,8 @@ var player_near = false
 var player1_near = false
 var player2_near = false
 
+var rng = RandomNumberGenerator.new()
+
 # señal que indica cuando se cambia la vida de la torre
 signal tower_health_change
 # señal que indica fin del juego con victoria FIXME sin vincular
@@ -24,6 +26,7 @@ signal tower_repaired
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	#inicializar la vida de la torre
 	emit_signal("tower_health_change", 0)
 	# animacion de la luz
@@ -40,27 +43,28 @@ func _process(delta):
 
 func _on_torre_body_entered(body : Player):
 	if body:
-		if body.name == "player":
+		if body.nombre == "player":
 			player_near = true
-		elif body.name == "player2":
+		elif body.nombre == "player2":
 			player1_near = true
-		else:
+		elif body.nombre == "player3":
 			player2_near = true
 	
 func _on_torre_body_exited(body : Player):
 	if body:
-		if body.name == "player":
+		if body.nombre == "player":
 			player_near = false
-		elif body.name == "player2":
+		elif body.nombre == "player2":
 			player1_near = false
-		else:
+		elif body.nombre == "player3":
 			player2_near = false
 
 func _on_player_repairing(player : Player):
-	if $Timer.is_stopped():
-		if (player.name == "player" and player_near) or (player.name == "player_1" and player1_near) or (player.name == "player_2" and player2_near):
-			$Timer.start(tiempo_espera)
-			life_points += 1
-			emit_signal("tower_health_change", life_points)
-			emit_signal("tower_repaired", player.name)
+	if rng.randf_range(0, 1) > 0.5:
+		if $Timer.is_stopped():
+			if (player.nombre == "player" and player_near) or (player.nombre == "player2" and player1_near) or (player.nombre == "player3" and player2_near):
+				$Timer.start(tiempo_espera)
+				life_points += 1
+				emit_signal("tower_health_change", life_points)
+				emit_signal("tower_repaired", player.nombre)
 		

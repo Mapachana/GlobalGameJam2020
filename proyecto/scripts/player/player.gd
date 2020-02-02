@@ -20,6 +20,8 @@ export var right = "ui_right"
 export var reparar = "ui_accept"
 export var pato = "ui_pato"
 
+export var nombre = "player"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
