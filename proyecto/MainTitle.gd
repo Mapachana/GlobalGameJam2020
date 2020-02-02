@@ -8,6 +8,8 @@ func _ready():
 	ScManager = get_node("/root/Global")
 	if self.name != "MainTitle":
 		$Label3.text = "Score: " + str(ScManager.score)
+		if self.name == "Win":	
+			$duck/Sprite2.hide()
 	set_process(true)
 
 #Check button press

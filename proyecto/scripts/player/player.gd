@@ -11,6 +11,8 @@ var vel = Vector2(0.0,0.0)
 var anim
 var is_repairing = false
 
+var ScManager = null
+
 # Señal para reparar
 signal repairing
 signal pato_presionado
@@ -18,6 +20,7 @@ signal pato_presionado
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ScManager = get_node("/root/Global")
 	$AnimationPlayer.play("idle")
 	pass # Replace with function body.
 
@@ -49,6 +52,8 @@ func move():
 			change_anim("walk_right")
 	elif Input.is_action_pressed("ui_pato"):
 		emit_signal("pato_presionado")
+	elif Input.is_action_pressed("menu"):
+		ScManager.goto_scene("res://escenas/GameOver_lose.tscn")
 	elif (not is_repairing):
 		vel.x = 0
 		vel.y = 0

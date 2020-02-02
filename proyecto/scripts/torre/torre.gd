@@ -5,7 +5,7 @@ class_name Torre
 # puntos de vida actuales y maximos
 var life_points = 0
 var max_life = 100
-var tiempo_espera = 1.0
+var tiempo_espera = 0.7
 
 var player_near = false
 

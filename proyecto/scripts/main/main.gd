@@ -22,17 +22,19 @@ func _ready():
 	time_start = OS.get_unix_time()
 	$Label.text = "Score: 0"
 	if ScManager.dificil:
-		$Node2D/barricada.change_health(8)
-		$Node2D/barricada2.change_health(8)
-		$Node2D/Node2D.min_t = 2.5
-		$Node2D/Node2D.max_t = 4.5
-		prob_moba = 0.95
+		$Node2D/barricada.change_health(6)
+		$Node2D/barricada2.change_health(6)
+		$Node2D/Node2D.min_t = 2.4
+		$Node2D/Node2D.max_t = 4.3
+		prob_moba = 0.05
+		#prob_moba = 1.0
 	else:
 		$Node2D/barricada.change_health(10)
 		$Node2D/barricada2.change_health(10)
 		$Node2D/Node2D.min_t = 3
 		$Node2D/Node2D.max_t = 5
-		prob_moba = 0.90
+		prob_moba = 0.10
+		#prob_moba = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -57,7 +59,7 @@ func _on_Timer_endgame_timeout():
 func _on_pinchos_hit_zombie():
 	ScManager.score += 10
 	$Label.text = "Score: " + str(ScManager.score)
-	if not moba and rng.randf_range(0, 1) > prob_moba:
+	if not moba and rng.randf_range(0, 1) <= prob_moba:
 		moba = true
 		# Hacer pato
 		pato = plantilla_pato.instance()

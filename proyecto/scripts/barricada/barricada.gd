@@ -66,8 +66,8 @@ func _on_player_repairing():
 func update_sprite():
 	if vida == VIDA_MAX:
 		$Sprite.frame = 0
-	elif vida >= VIDA_MAX / 2:
+	elif vida <= VIDA_MAX / 2:
 		$Sprite.frame = 1
-	elif vida < VIDA_MAX / 2:
-		$Sprite.frame = 2
+	#elif vida < VIDA_MAX / 2:
+	#	$Sprite.frame = 2
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://img/duck/pato_grande.png" type="Texture" id=1]
 [ext_resource path="res://scripts/duck/duck.gd" type="Script" id=2]
 [ext_resource path="res://img/barricada/barricada_explota.png" type="Texture" id=3]
+[ext_resource path="res://img/duck/powe up.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33.0372, 10 )
@@ -195,4 +196,8 @@ anims/panic = SubResource( 6 )
 
 [node name="Timer_explosion" type="Timer" parent="."]
 one_shot = true
+
+[node name="Sprite2" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
 [connection signal="timeout" from="Timer_explosion" to="." method="_on_Timer_explosion_timeout"]
