@@ -63,6 +63,14 @@ scale = Vector2( 0.7, 0.7 )
 position = Vector2( 210.464, 278.267 )
 scale = Vector2( 2, 2 )
 
+[node name="player2" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( 210.464, 278.267 )
+scale = Vector2( 2, 2 )
+
+[node name="player3" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( 300, 278.267 )
+scale = Vector2( 2, 2 )
+
 [node name="Node2D" type="Node2D" parent="Node2D"]
 position = Vector2( -16.8846, 279.147 )
 script = ExtResource( 7 )
@@ -124,18 +132,31 @@ one_shot = true
 [connection signal="hit_zombie" from="Node2D/pinchos2" to="." method="_on_pinchos_hit_zombie"]
 [connection signal="body_exited" from="Node2D/torre" to="Node2D/torre" method="_on_torre_body_exited"]
 [connection signal="fin_victoria" from="Node2D/torre" to="." method="_on_torre_fin_victoria"]
+[connection signal="tower_repaired" from="Node2D/torre" to="." method="_on_torre_tower_repaired"]
 [connection signal="barricada_destruida" from="Node2D/barricada" to="." method="_on_barricada_barricada_destruida"]
 [connection signal="barricada_destruida" from="Node2D/barricada" to="Node2D/pinchos" method="_on_barricada_barricada_destruida"]
-[connection signal="barricada_destruida" from="Node2D/barricada2" to="Node2D/pinchos2" method="_on_barricada_barricada_destruida"]
 [connection signal="barricada_destruida" from="Node2D/barricada2" to="." method="_on_barricada_barricada_destruida"]
+[connection signal="barricada_destruida" from="Node2D/barricada2" to="Node2D/pinchos2" method="_on_barricada_barricada_destruida"]
 [connection signal="barricade_button_pressed" from="Node2D/barricade_button" to="Node2D/pinchos" method="_on_barricade_button_barricade_button_pressed"]
 [connection signal="barricade_button_pressed" from="Node2D/barricade_button2" to="Node2D/pinchos2" method="_on_barricade_button_barricade_button_pressed"]
 [connection signal="pato_presionado" from="Node2D/player" to="." method="_on_player_pato_presionado"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricada" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button2" method="_on_player_repairing"]
-[connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/torre" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player" to="Node2D/barricade_button" method="_on_player_repairing"]
 [connection signal="repairing" from="Node2D/player" to="Node2D/barricada2" method="_on_player_repairing"]
+[connection signal="pato_presionado" from="Node2D/player2" to="." method="_on_player_pato_presionado"]
+[connection signal="repairing" from="Node2D/player2" to="Node2D/barricada" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player2" to="Node2D/barricade_button2" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player2" to="Node2D/torre" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player2" to="Node2D/barricade_button" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player2" to="Node2D/barricada2" method="_on_player_repairing"]
+[connection signal="pato_presionado" from="Node2D/player3" to="." method="_on_player_pato_presionado"]
+[connection signal="repairing" from="Node2D/player3" to="Node2D/barricada" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player3" to="Node2D/barricade_button2" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player3" to="Node2D/torre" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player3" to="Node2D/barricade_button" method="_on_player_repairing"]
+[connection signal="repairing" from="Node2D/player3" to="Node2D/barricada2" method="_on_player_repairing"]
 [connection signal="timeout" from="Node2D/Node2D/Timer" to="Node2D/Node2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Node2D/Timer_endgame" to="." method="_on_Timer_endgame_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

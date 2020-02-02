@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.87497, 9.48428 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 resource_name = "idle"
 loop = true
 tracks/0/type = "value"
@@ -22,8 +22,7 @@ tracks/0/keys = {
 "values": [ 6, 7 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "repair_right"
+[sub_resource type="Animation" id=6]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -39,7 +38,7 @@ tracks/0/keys = {
 "values": [ 5, 4 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -71,6 +70,6 @@ hframes = 8
 frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 4 )
-anims/repair_right = SubResource( 2 )
-anims/walk_right = SubResource( 3 )
+anims/idle = SubResource( 5 )
+anims/repair_right = SubResource( 6 )
+anims/walk_right = SubResource( 4 )

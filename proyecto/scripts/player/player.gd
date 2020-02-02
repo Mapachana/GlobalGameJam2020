@@ -15,6 +15,11 @@ var is_repairing = false
 signal repairing
 signal pato_presionado
 
+export var left = "ui_left"
+export var right = "ui_right"
+export var reparar = "ui_accept"
+export var pato = "ui_pato"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,27 +33,27 @@ func _process(delta):
 	move()
 	if is_repairing:
 		change_anim("repair_right")
-		emit_signal("repairing")
+		emit_signal("repairing", self)
 	move_and_collide(vel*delta)
 	pass
 
 func move():
-	if (Input.is_action_pressed("ui_right")):
+	if (Input.is_action_pressed(right)):
 		vel.x = speed
 		vel.y = 0
 		is_repairing = false
 		$Sprite.set_flip_h(false)
 		if $AnimationPlayer.current_animation != "walk_right":
 			change_anim("walk_right")
-	elif (Input.is_action_pressed("ui_left")):
+	elif (Input.is_action_pressed(left)):
 		vel.x = -speed
 		vel.y = 0
 		is_repairing = false
 		$Sprite.set_flip_h(true)
 		if $AnimationPlayer.current_animation != "walk_right":
 			change_anim("walk_right")
-	elif Input.is_action_pressed("ui_pato"):
-		emit_signal("pato_presionado")
+	elif Input.is_action_pressed(pato):
+		emit_signal("pato_presionado", self)
 	elif (not is_repairing):
 		vel.x = 0
 		vel.y = 0
@@ -60,7 +65,7 @@ func move():
 		change_anim("repair_right")
 		
 func repair():
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed(reparar):
 		is_repairing = true
 	else:
 		is_repairing = false

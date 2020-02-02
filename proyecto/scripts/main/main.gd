@@ -26,8 +26,19 @@ func _ready():
 	$Label.text = "Score: 0"
 	$Label2.text = "Score 2: 0"
 	$Label3.text = "Score 1: 0"
+	$Label.show()
 	$Label2.hide()
 	$Label3.hide()
+	$Node2D/player.show()
+	$Node2D/player.set_collision_layer_bit(0, true)
+	$Node2D/player.set_collision_mask_bit(0, true)
+	$Node2D/player2.hide()
+	$Node2D/player2.set_collision_layer_bit(0, false)
+	$Node2D/player2.set_collision_mask_bit(0, false)
+	$Node2D/player3.hide()
+	$Node2D/player3.set_collision_layer_bit(0, false)
+	$Node2D/player3.set_collision_mask_bit(0, false)
+	$Node2D
 	if ScManager.multi:
 		$Node2D/barricada.change_health(6)
 		$Node2D/barricada2.change_health(6)
@@ -37,7 +48,15 @@ func _ready():
 		$Label.hide()
 		$Label2.show()
 		$Label3.show()
-		$Label.text ="Score 1: 0"
+		$Node2D/player.hide()
+		$Node2D/player.set_collision_layer_bit(0, false)
+		$Node2D/player.set_collision_mask_bit(0, false)
+		$Node2D/player2.show()
+		$Node2D/player2.set_collision_layer_bit(0, true)
+		$Node2D/player2.set_collision_mask_bit(0, true)
+		$Node2D/player3.show()
+		$Node2D/player3.set_collision_layer_bit(0, true)
+		$Node2D/player3.set_collision_mask_bit(0, true)
 		
 	elif ScManager.dificil:
 		$Node2D/barricada.change_health(8)
@@ -109,3 +128,14 @@ func _on_Area2D_body_entered(body):
 
 func _on_Explosion_timeout():
 	get_tree().call_group("enemies", "die")
+
+
+func _on_torre_tower_repaired(name):
+	if name == "player2":
+		ScManager.score1 += 10
+		$Label3.text = "Score 1: " + str(ScManager.score1)
+	elif name == "player3":
+		ScManager.score2 += 10
+		$Label2.text = "Score 2: " + str(ScManager.score2)
+	ScManager.score += 10
+	$Label.text = "Score: " + str(ScManager.score)
