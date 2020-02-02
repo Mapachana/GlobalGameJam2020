@@ -24,15 +24,15 @@ func _ready():
 	if ScManager.dificil:
 		$Node2D/barricada.change_health(8)
 		$Node2D/barricada2.change_health(8)
-		$Node2D/Node2D.min_t = 2.75
-		$Node2D/Node2D.max_t = 4.75
+		$Node2D/Node2D.min_t = 2.5
+		$Node2D/Node2D.max_t = 4.5
 		prob_moba = 0.95
 	else:
 		$Node2D/barricada.change_health(10)
 		$Node2D/barricada2.change_health(10)
 		$Node2D/Node2D.min_t = 3
 		$Node2D/Node2D.max_t = 5
-		prob_moba = 0.10
+		prob_moba = 0.90
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -72,7 +72,6 @@ func _on_player_pato_presionado():
 
 
 func _on_Area2D_body_entered(body):
-	print("entro")
 	if moba:
 		moba = false
 		pato.queue_free()
