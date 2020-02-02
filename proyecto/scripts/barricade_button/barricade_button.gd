@@ -5,7 +5,7 @@ class_name barricade_button
 signal barricade_button_pressed
 
 # Tiempo de enfriamiento 
-export var TIEMPO_ESPERA = 2
+export var TIEMPO_ESPERA = 2.3
 
 # Booleanas
 # Botón pulsado
@@ -22,7 +22,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
 
 func _on_barricade_button_body_entered(body : Player):
 	if body:

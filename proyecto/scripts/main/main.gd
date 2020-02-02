@@ -33,8 +33,8 @@ func _ready():
 	if ScManager.multi:
 		$Node2D/barricada.change_health(6)
 		$Node2D/barricada2.change_health(6)
-		$Node2D/Node2D.min_t = 1.5
-		$Node2D/Node2D.max_t = 3.5
+		$Node2D/Node2D.min_t = 0.5
+		$Node2D/Node2D.max_t = 2.0
 		prob_moba = 0.95
 		$Label.hide()
 		$Label2.show()
@@ -65,6 +65,13 @@ func _ready():
 
 
 func _on_barricada_barricada_destruida(barricada : Barricada):
+	if barricada.nombre == "barricada2":
+		ScManager.score2 = clamp(ScManager.score2 - 500, 0, 10000000)
+		$Label2.text = "Score 2: " + str(ScManager.score2)	
+	elif barricada.nombre == "barricada1":
+		ScManager.score1 = clamp(ScManager.score1 - 500, 0, 10000000)
+		$Label3.text = "Score 1: " + str(ScManager.score1)	
+		
 	$Node2D/Timer_endgame.start(1.5)
 
 func _on_torre_fin_victoria():
@@ -77,8 +84,8 @@ func _on_torre_fin_victoria():
 	if ScManager.dificil:               
 		ScManager.score += 1000
 	$Label.text = "Score: " + str(ScManager.score)
-	$Label3.text = "Score 1: " + str(ScManager.score)
-	$Label2.text = "Score 2: " + str(ScManager.score)	
+	$Label3.text = "Score 1: " + str(ScManager.score1)
+	$Label2.text = "Score 2: " + str(ScManager.score2)	
 	ScManager.goto_scene("res://escenas/GameOver_win.tscn")
 
 func _on_Timer_endgame_timeout():

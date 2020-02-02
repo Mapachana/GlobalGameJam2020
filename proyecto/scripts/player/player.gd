@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 class_name Player
 
 # Declare member variables here. Examples:
@@ -14,6 +13,7 @@ var is_repairing = false
 # Posibles texturas
 var player_tex1 = preload("res://img/player/player_completo.png")
 var player_tex2 = preload("res://img/player/player2_completo.png")
+export var textura = 1
 
 # Señal para reparar
 signal repairing
@@ -29,6 +29,7 @@ export var nombre = "player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_sprite(textura)
 	$AnimationPlayer.play("idle")
 	pass # Replace with function body.
 

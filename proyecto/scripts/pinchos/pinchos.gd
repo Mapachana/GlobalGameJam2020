@@ -83,5 +83,5 @@ func _on_pinchos_body_entered(body : Zombie):
 		emit_signal("hit_zombie", self.name)
 
 # Cuando se destruye la barricada asociada a los pinchos
-func _on_barricada_barricada_destruida():
+func _on_barricada_barricada_destruida(_barricada):
 	self.queue_free()

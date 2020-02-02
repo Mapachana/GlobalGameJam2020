@@ -24,7 +24,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 1, 2 ]
 }
-
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:texture")
 tracks/1/interp = 1

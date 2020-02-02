@@ -8,6 +8,7 @@ signal barricada_destruida
 signal barricada_health_change
 # Vida máxima
 export var VIDA_MAX = 10
+export var nombre = "barricada"
 # Tiempo de espera para reparación
 const TIEMPO_ESPERA = 2
 # La vida de la barricada
