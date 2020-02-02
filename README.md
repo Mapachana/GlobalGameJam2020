@@ -1,6 +1,8 @@
 # Global Game Jam 2020
 Respoitorio para subir el juego de la Global Game Jam 2020 :D
 
+Link: https://globalgamejam.org/2020/games/corona-zombi-1
+
 # **Zombie Barricade:**
 
 ## Story:
